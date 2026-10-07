@@ -1,0 +1,1767 @@
+{
+ "$schema": "https://vega.github.io/schema/vega/v5.json",
+ "description": "Sankey HSE AJ (Deneb/Power BI) v11. Layout atado al contenedor, sin acumuladores: todo se multiplica por esc = clamp(min(W/640, H/466), cfg_esc_min, cfg_esc_max); pad_l/pad_r se miden del largo real de las etiquetas de nivel; los chips se reparten en proporcion a su texto. Ajusta fuentes en cfg_fs_*, el motor en cfg_esc_*, cfg_char_w y cfg_holgura_*.",
+ "autosize": "none",
+ "width": {
+  "signal": "W"
+ },
+ "height": {
+  "signal": "H"
+ },
+ "padding": 0,
+ "background": {
+  "signal": "cfg_fondo"
+ },
+ "signals": [
+  {
+   "name": "cfg_fondo",
+   "value": "#FFFFFF"
+  },
+  {
+   "name": "cfg_fuente",
+   "value": "Montserrat, Segoe UI, sans-serif"
+  },
+  {
+   "name": "cfg_fs_etiquetas",
+   "value": 12
+  },
+  {
+   "name": "cfg_color_etiquetas",
+   "value": "#193966"
+  },
+  {
+   "name": "cfg_fs_leyenda",
+   "value": 12
+  },
+  {
+   "name": "cfg_color_leyenda",
+   "value": "#5C6E8F"
+  },
+  {
+   "name": "cfg_fs_titulo",
+   "value": 15
+  },
+  {
+   "name": "cfg_color_titulo",
+   "value": "#193966"
+  },
+  {
+   "name": "cfg_fs_subtitulo",
+   "value": 13
+  },
+  {
+   "name": "cfg_color_subtitulo",
+   "value": "#5C6E8F"
+  },
+  {
+   "name": "cfg_fs_cab",
+   "value": 12
+  },
+  {
+   "name": "cfg_color_cab",
+   "value": "#193966"
+  },
+  {
+   "name": "cfg_fs_chip",
+   "value": 13
+  },
+  {
+   "name": "cfg_color_chip_txt",
+   "value": "#193966"
+  },
+  {
+   "name": "cfg_chip_fondo",
+   "value": "#EAF2FB"
+  },
+  {
+   "name": "cfg_chip_borde",
+   "value": "#C9D6E8"
+  },
+  {
+   "name": "cfg_chip_activo",
+   "value": "#193966"
+  },
+  {
+   "name": "cfg_fs_panel1",
+   "value": 13
+  },
+  {
+   "name": "cfg_color_panel1",
+   "value": "#193966"
+  },
+  {
+   "name": "cfg_fs_panel2",
+   "value": 12
+  },
+  {
+   "name": "cfg_color_panel2",
+   "value": "#5C6E8F"
+  },
+  {
+   "name": "cfg_panel_fondo",
+   "value": "#F4F7FB"
+  },
+  {
+   "name": "cfg_panel_sel",
+   "value": "#EAF2FB"
+  },
+  {
+   "name": "W",
+   "value": 640,
+   "update": "pbiContainerWidth"
+  },
+  {
+   "name": "H",
+   "value": 466,
+   "update": "pbiContainerHeight"
+  },
+  {
+   "name": "pad_l",
+   "value": 120,
+   "update": "min(ancho_etq + cfg_holgura_pad * esc, W * 0.34)"
+  },
+  {
+   "name": "pad_r",
+   "value": 170,
+   "update": "min(ancho_etq + cfg_holgura_pad * esc, W * 0.34)"
+  },
+  {
+   "name": "pad_t",
+   "value": 104,
+   "update": "min(esp_topo, H * 0.34)"
+  },
+  {
+   "name": "pad_b",
+   "value": 78,
+   "update": "min(esp_pie, H * 0.30)"
+  },
+  {
+   "name": "nodo_w",
+   "value": 13,
+   "update": "max(8, cfg_nodo_w * esc)"
+  },
+  {
+   "name": "gap",
+   "value": 3,
+   "update": "max(2, cfg_gap * esc)"
+  },
+  {
+   "name": "hab_sel",
+   "value": "Asertividad",
+   "on": [
+    {
+     "events": "@chip:click",
+     "update": "datum.value"
+    },
+    {
+     "events": "@chip_txt:click",
+     "update": "datum.value"
+    }
+   ]
+  },
+  {
+   "name": "ancho_util",
+   "update": "W - pad_l - pad_r"
+  },
+  {
+   "name": "alto_util",
+   "update": "H - pad_t - pad_b"
+  },
+  {
+   "name": "K",
+   "update": "data('cortes').length"
+  },
+  {
+   "name": "Ki",
+   "update": "K > 1 ? K - 1 : 1"
+  },
+  {
+   "name": "n_sube",
+   "update": "data('r_sube')[0] ? data('r_sube')[0].t : 0"
+  },
+  {
+   "name": "n_igual",
+   "update": "data('r_igual')[0] ? data('r_igual')[0].t : 0"
+  },
+  {
+   "name": "n_baja",
+   "update": "data('r_baja')[0] ? data('r_baja')[0].t : 0"
+  },
+  {
+   "name": "n_total",
+   "update": "n_sube + n_igual + n_baja"
+  },
+  {
+   "name": "acad_txt",
+   "update": "data('acads').length === 0 ? '' : (data('acads').length === 1 ? data('acads')[0].Academia : (data('acads').length + ' academias'))"
+  },
+  {
+   "name": "sel",
+   "value": "",
+   "on": [
+    {
+     "events": "@cintas:click",
+     "update": "sel === (datum.clave_flujo || datum.clave_nodo || datum.clave) ? \"\" : (datum.clave_flujo || datum.clave_nodo || datum.clave)"
+    },
+    {
+     "events": "@barras:click",
+     "update": "sel === (datum.clave_flujo || datum.clave_nodo || datum.clave) ? \"\" : (datum.clave_flujo || datum.clave_nodo || datum.clave)"
+    },
+    {
+     "events": "@etiq_izq:click",
+     "update": "sel === (datum.clave_flujo || datum.clave_nodo || datum.clave) ? \"\" : (datum.clave_flujo || datum.clave_nodo || datum.clave)"
+    },
+    {
+     "events": "@etiq_der:click",
+     "update": "sel === (datum.clave_flujo || datum.clave_nodo || datum.clave) ? \"\" : (datum.clave_flujo || datum.clave_nodo || datum.clave)"
+    },
+    {
+     "events": "click[!item]",
+     "update": "''"
+    }
+   ]
+  },
+  {
+   "name": "sel_o",
+   "update": "length(split(sel, '|')) === 4 ? split(sel, '|')[0] + '|' + split(sel, '|')[1] : ''"
+  },
+  {
+   "name": "sel_d",
+   "update": "length(split(sel, '|')) === 4 ? split(sel, '|')[2] + '|' + split(sel, '|')[3] : ''"
+  },
+  {
+   "name": "tot_flow",
+   "update": "'Total ' + hab_sel + (acad_txt ? ' · ' + acad_txt : '') + ': ' + n_total + ' estudiantes'"
+  },
+  {
+   "name": "tot_det",
+   "update": "n_total > 0 ? 'Suben de categoría ' + n_sube + ' (' + format(100 * n_sube / n_total, '.0f') + '%)   ·   Se mantienen ' + n_igual + ' (' + format(100 * n_igual / n_total, '.0f') + '%)   ·   Bajan de categoría ' + n_baja + ' (' + format(100 * n_baja / n_total, '.0f') + '%)' : ''"
+  },
+  {
+   "name": "sel_flow",
+   "update": "data('detalle')[0] ? data('detalle')[0].flow_txt : (data('detalle_nodo')[0] ? data('detalle_nodo')[0].flow_txt : tot_flow)"
+  },
+  {
+   "name": "sel_det",
+   "update": "data('detalle')[0] ? data('detalle')[0].det_txt : (data('detalle_nodo')[0] ? data('detalle_nodo')[0].det_txt : tot_det)"
+  },
+  {
+   "name": "hab_lbl",
+   "update": "data('habs').length && indexof(pluck(data('habs'), 'value'), hab_sel) >= 0 ? data('habs')[indexof(pluck(data('habs'), 'value'), hab_sel)].label : hab_sel"
+  },
+  {
+   "name": "cfg_esc_min",
+   "value": 0.62
+  },
+  {
+   "name": "cfg_esc_max",
+   "value": 1.35
+  },
+  {
+   "name": "cfg_esc_fija",
+   "value": 0
+  },
+  {
+   "name": "cfg_centrar_en_area",
+   "value": true
+  },
+  {
+   "name": "cfg_char_w",
+   "value": 0.55
+  },
+  {
+   "name": "cfg_holgura_pad",
+   "value": 10
+  },
+  {
+   "name": "cfg_holgura_chip",
+   "value": 18
+  },
+  {
+   "name": "cfg_chip_gap_chars",
+   "value": 1.6
+  },
+  {
+   "name": "cfg_chip_ptot",
+   "value": 51
+  },
+  {
+   "name": "cfg_chip_n",
+   "value": 4
+  },
+  {
+   "name": "cfg_nodo_w",
+   "value": 13
+  },
+  {
+   "name": "cfg_gap",
+   "value": 3
+  },
+  {
+   "name": "cfg_chip_h",
+   "value": 24
+  },
+  {
+   "name": "cfg_texto_filtro",
+   "value": "Habilidad:"
+  },
+  {
+   "name": "cfg_texto_titulo",
+   "value": "Transición entre niveles"
+  },
+  {
+   "name": "cfg_txt_sube",
+   "value": "Sube de categoría: "
+  },
+  {
+   "name": "cfg_txt_igual",
+   "value": "Se mantiene: "
+  },
+  {
+   "name": "cfg_txt_baja",
+   "value": "Baja de categoría: "
+  },
+  {
+   "name": "esc",
+   "update": "cfg_esc_fija > 0 ? cfg_esc_fija : clamp(min(W / 640, H / 466), cfg_esc_min, cfg_esc_max)"
+  },
+  {
+   "name": "esp_topo",
+   "update": "104 * esc"
+  },
+  {
+   "name": "esp_pie",
+   "update": "78 * esc"
+  },
+  {
+   "name": "ancho_etq",
+   "update": "data('etq_ancho')[0] ? data('etq_ancho')[0].mx * cfg_fs_etiquetas * esc * cfg_char_w : 0"
+  },
+  {
+   "name": "cx",
+   "update": "cfg_centrar_en_area ? (W + pad_l - pad_r) / 2 : W / 2"
+  },
+  {
+   "name": "chip_y0",
+   "update": "9 * esc"
+  },
+  {
+   "name": "chip_y1",
+   "update": "chip_y0 + cfg_chip_h * esc"
+  },
+  {
+   "name": "chip_x_ini",
+   "update": "max(14 * esc + length(cfg_texto_filtro) * cfg_fs_chip * esc * cfg_char_w + cfg_holgura_chip * esc, 0.18 * W)"
+  },
+  {
+   "name": "chip_libre",
+   "update": "W - 14 * esc - chip_x_ini"
+  },
+  {
+   "name": "chip_u",
+   "update": "chip_libre / (cfg_chip_ptot + cfg_chip_n * cfg_chip_gap_chars)"
+  },
+  {
+   "name": "paso_leyenda",
+   "update": "(W - 48 * esc) / 3"
+  }
+ ],
+ "scales": [
+  {
+   "name": "ordenNivel",
+   "type": "ordinal",
+   "domain": [
+    "MUY BAJO",
+    "BAJO",
+    "PROMEDIO BAJO",
+    "PROMEDIO",
+    "PROMEDIO ALTO",
+    "ALTO",
+    "MUY ALTO"
+   ],
+   "range": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "name": "colorNivel",
+   "type": "ordinal",
+   "domain": [
+    "MUY BAJO",
+    "BAJO",
+    "PROMEDIO BAJO",
+    "PROMEDIO",
+    "PROMEDIO ALTO",
+    "ALTO",
+    "MUY ALTO"
+   ],
+   "range": [
+    "#8E1F1F",
+    "#E53935",
+    "#FB8C00",
+    "#FDD835",
+    "#A5D6A7",
+    "#43A047",
+    "#1B5E20"
+   ]
+  }
+ ],
+ "data": [
+  {
+   "name": "dataset"
+  },
+  {
+   "name": "flows",
+   "source": "dataset",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.Habilidad === hab_sel"
+    },
+    {
+     "type": "formula",
+     "as": "n",
+     "expr": "isValid(toNumber(datum.N)) ? toNumber(datum.N) : (isValid(toNumber(datum['Suma de N'])) ? toNumber(datum['Suma de N']) : (isValid(toNumber(datum['Sum of N'])) ? toNumber(datum['Sum of N']) : (isValid(toNumber(datum['Recuento de N'])) ? toNumber(datum['Recuento de N']) : (isValid(toNumber(datum['Count of N'])) ? toNumber(datum['Count of N']) : (1)))))"
+    },
+    {
+     "type": "formula",
+     "as": "o_ord",
+     "expr": "scale('ordenNivel', datum.Categoria_Origen)"
+    },
+    {
+     "type": "formula",
+     "as": "d_ord",
+     "expr": "scale('ordenNivel', datum.Categoria_Destino)"
+    },
+    {
+     "type": "formula",
+     "as": "o_corte",
+     "expr": "toNumber(datum.Orden_Corte_Origen)"
+    },
+    {
+     "type": "formula",
+     "as": "d_corte",
+     "expr": "toNumber(datum.Orden_Corte_Destino)"
+    },
+    {
+     "type": "aggregate",
+     "groupby": [
+      "Habilidad",
+      "Categoria_Origen",
+      "Categoria_Destino",
+      "o_corte",
+      "o_ord",
+      "d_corte",
+      "d_ord"
+     ],
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "n"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "acads",
+   "source": "dataset",
+   "transform": [
+    {
+     "type": "aggregate",
+     "groupby": [
+      "Academia"
+     ],
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "t"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "out_raw",
+   "source": "flows",
+   "transform": [
+    {
+     "type": "aggregate",
+     "groupby": [
+      "o_corte",
+      "Categoria_Origen",
+      "o_ord"
+     ],
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "valor"
+     ]
+    },
+    {
+     "type": "formula",
+     "as": "corte",
+     "expr": "datum.o_corte"
+    },
+    {
+     "type": "formula",
+     "as": "categoria",
+     "expr": "datum.Categoria_Origen"
+    },
+    {
+     "type": "formula",
+     "as": "orden_cat",
+     "expr": "datum.o_ord"
+    }
+   ]
+  },
+  {
+   "name": "in_raw",
+   "source": "flows",
+   "transform": [
+    {
+     "type": "aggregate",
+     "groupby": [
+      "d_corte",
+      "Categoria_Destino",
+      "d_ord"
+     ],
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "valor"
+     ]
+    },
+    {
+     "type": "formula",
+     "as": "corte",
+     "expr": "datum.d_corte"
+    },
+    {
+     "type": "formula",
+     "as": "categoria",
+     "expr": "datum.Categoria_Destino"
+    },
+    {
+     "type": "formula",
+     "as": "orden_cat",
+     "expr": "datum.d_ord"
+    }
+   ]
+  },
+  {
+   "name": "nodos",
+   "source": [
+    "out_raw",
+    "in_raw"
+   ],
+   "transform": [
+    {
+     "type": "aggregate",
+     "groupby": [
+      "corte",
+      "categoria",
+      "orden_cat"
+     ],
+     "fields": [
+      "valor"
+     ],
+     "ops": [
+      "max"
+     ],
+     "as": [
+      "valor"
+     ]
+    },
+    {
+     "type": "joinaggregate",
+     "groupby": [
+      "corte"
+     ],
+     "fields": [
+      "valor",
+      "categoria"
+     ],
+     "ops": [
+      "sum",
+      "count"
+     ],
+     "as": [
+      "total_corte",
+      "n_niveles"
+     ]
+    },
+    {
+     "type": "formula",
+     "as": "alto",
+     "expr": "datum.valor / datum.total_corte * (alto_util - gap * (datum.n_niveles - 1))"
+    },
+    {
+     "type": "formula",
+     "as": "paso",
+     "expr": "datum.alto + gap"
+    },
+    {
+     "type": "window",
+     "groupby": [
+      "corte"
+     ],
+     "sort": {
+      "field": "orden_cat",
+      "order": "descending"
+     },
+     "frame": [
+      null,
+      0
+     ],
+     "ops": [
+      "sum"
+     ],
+     "fields": [
+      "paso"
+     ],
+     "as": [
+      "y_cum"
+     ]
+    },
+    {
+     "type": "formula",
+     "as": "y_top",
+     "expr": "pad_t + datum.y_cum - datum.paso"
+    },
+    {
+     "type": "formula",
+     "as": "y_bot",
+     "expr": "pad_t + datum.y_cum - gap"
+    }
+   ]
+  },
+  {
+   "name": "cortes",
+   "source": "nodos",
+   "transform": [
+    {
+     "type": "aggregate",
+     "groupby": [
+      "corte"
+     ],
+     "fields": [
+      "valor"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "t"
+     ]
+    },
+    {
+     "type": "project",
+     "fields": [
+      "corte"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cab_cortes",
+   "source": "cortes",
+   "transform": [
+    {
+     "type": "formula",
+     "as": "nombre",
+     "expr": "datum.corte === 0 ? 'INICIO' : (datum.corte === K - 1 ? 'PROCESO' : 'CORTE ' + (datum.corte + 1))"
+    },
+    {
+     "type": "formula",
+     "as": "x",
+     "expr": "pad_l + (ancho_util - nodo_w) * datum.corte / Ki + nodo_w / 2"
+    }
+   ]
+  },
+  {
+   "name": "nodos_geo",
+   "source": "nodos",
+   "transform": [
+    {
+     "type": "formula",
+     "as": "clave",
+     "expr": "datum.corte + '|' + datum.categoria"
+    },
+    {
+     "type": "formula",
+     "as": "x",
+     "expr": "pad_l + (ancho_util - nodo_w) * datum.corte / Ki"
+    },
+    {
+     "type": "formula",
+     "as": "lado",
+     "expr": "datum.corte === 0 ? 'izq' : 'der'"
+    },
+    {
+     "type": "formula",
+     "as": "clave_nodo",
+     "expr": "datum.clave"
+    },
+    {
+     "type": "formula",
+     "as": "nombre_corte",
+     "expr": "datum.corte === 0 ? 'Inicio' : (datum.corte === K - 1 ? 'Proceso' : 'Corte ' + (datum.corte + 1))"
+    },
+    {
+     "type": "formula",
+     "as": "txt",
+     "expr": "datum.categoria + '  ' + datum.valor + '  (' + format(100 * datum.valor / datum.total_corte, '.0f') + '%)'"
+    }
+   ]
+  },
+  {
+   "name": "nodos_izq",
+   "source": "nodos_geo",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.lado === 'izq'"
+    }
+   ]
+  },
+  {
+   "name": "nodos_der",
+   "source": "nodos_geo",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.lado === 'der'"
+    }
+   ]
+  },
+  {
+   "name": "ribbons",
+   "source": "flows",
+   "transform": [
+    {
+     "type": "window",
+     "groupby": [
+      "o_corte",
+      "Categoria_Origen"
+     ],
+     "sort": {
+      "field": "d_ord",
+      "order": "descending"
+     },
+     "frame": [
+      null,
+      0
+     ],
+     "ops": [
+      "sum"
+     ],
+     "fields": [
+      "n"
+     ],
+     "as": [
+      "cum_src"
+     ]
+    },
+    {
+     "type": "joinaggregate",
+     "groupby": [
+      "o_corte",
+      "Categoria_Origen"
+     ],
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "tot_src"
+     ]
+    },
+    {
+     "type": "window",
+     "groupby": [
+      "d_corte",
+      "Categoria_Destino"
+     ],
+     "sort": {
+      "field": "o_ord",
+      "order": "descending"
+     },
+     "frame": [
+      null,
+      0
+     ],
+     "ops": [
+      "sum"
+     ],
+     "fields": [
+      "n"
+     ],
+     "as": [
+      "cum_dst"
+     ]
+    },
+    {
+     "type": "joinaggregate",
+     "groupby": [
+      "d_corte",
+      "Categoria_Destino"
+     ],
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "tot_dst"
+     ]
+    },
+    {
+     "type": "formula",
+     "as": "clave_src",
+     "expr": "datum.o_corte + '|' + datum.Categoria_Origen"
+    },
+    {
+     "type": "formula",
+     "as": "clave_dst",
+     "expr": "datum.d_corte + '|' + datum.Categoria_Destino"
+    },
+    {
+     "type": "lookup",
+     "from": "nodos_geo",
+     "key": "clave",
+     "fields": [
+      "clave_src"
+     ],
+     "values": [
+      "x",
+      "y_top",
+      "y_bot",
+      "alto"
+     ],
+     "as": [
+      "src_x",
+      "src_y0",
+      "src_y1",
+      "src_alto"
+     ]
+    },
+    {
+     "type": "lookup",
+     "from": "nodos_geo",
+     "key": "clave",
+     "fields": [
+      "clave_dst"
+     ],
+     "values": [
+      "x",
+      "y_top",
+      "y_bot",
+      "alto"
+     ],
+     "as": [
+      "dst_x",
+      "dst_y0",
+      "dst_y1",
+      "dst_alto"
+     ]
+    },
+    {
+     "type": "filter",
+     "expr": "datum.src_x != null && datum.dst_x != null"
+    },
+    {
+     "type": "formula",
+     "as": "x0",
+     "expr": "datum.src_x + nodo_w"
+    },
+    {
+     "type": "formula",
+     "as": "x1",
+     "expr": "datum.dst_x"
+    },
+    {
+     "type": "formula",
+     "as": "cm",
+     "expr": "(datum.src_x + nodo_w + datum.dst_x) / 2"
+    },
+    {
+     "type": "formula",
+     "as": "sy0",
+     "expr": "datum.src_y0 + (datum.cum_src - datum.n) / datum.tot_src * datum.src_alto"
+    },
+    {
+     "type": "formula",
+     "as": "sy1",
+     "expr": "datum.src_y0 + datum.cum_src / datum.tot_src * datum.src_alto"
+    },
+    {
+     "type": "formula",
+     "as": "dy0",
+     "expr": "datum.dst_y0 + (datum.cum_dst - datum.n) / datum.tot_dst * datum.dst_alto"
+    },
+    {
+     "type": "formula",
+     "as": "dy1",
+     "expr": "datum.dst_y0 + datum.cum_dst / datum.tot_dst * datum.dst_alto"
+    },
+    {
+     "type": "joinaggregate",
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "tot_todos"
+     ]
+    },
+    {
+     "type": "formula",
+     "as": "clave_flujo",
+     "expr": "datum.o_corte + '|' + datum.Categoria_Origen + '|' + datum.d_corte + '|' + datum.Categoria_Destino"
+    },
+    {
+     "type": "formula",
+     "as": "o_nombre",
+     "expr": "datum.o_corte === 0 ? 'Inicio' : (datum.o_corte === K - 1 ? 'Proceso' : 'Corte ' + (datum.o_corte + 1))"
+    },
+    {
+     "type": "formula",
+     "as": "d_nombre",
+     "expr": "datum.d_corte === 0 ? 'Inicio' : (datum.d_corte === K - 1 ? 'Proceso' : 'Corte ' + (datum.d_corte + 1))"
+    },
+    {
+     "type": "formula",
+     "as": "dir",
+     "expr": "datum.d_ord > datum.o_ord ? 'subio' : (datum.d_ord < datum.o_ord ? 'bajo' : 'igual')"
+    },
+    {
+     "type": "formula",
+     "as": "color",
+     "expr": "datum.dir === 'subio' ? '#2E7D32' : (datum.dir === 'bajo' ? '#C62828' : '#9E9E9E')"
+    },
+    {
+     "type": "formula",
+     "as": "flow_txt",
+     "expr": "(K > 2 ? 'C' + (datum.o_corte + 1) + ' ' : '') + datum.Categoria_Origen + '  →  ' + (K > 2 ? 'C' + (datum.d_corte + 1) + ' ' : '') + datum.Categoria_Destino"
+    },
+    {
+     "type": "formula",
+     "as": "det_txt",
+     "expr": "datum.n + ' estudiantes (' + format(100 * datum.n / datum.tot_todos, '.0f') + '% del total)   ·   nivel '+ datum.o_ord + ' a nivel ' + datum.d_ord + '   ·   '+ (datum.dir === 'subio' ? 'SUBE de categoría' : (datum.dir === 'bajo' ? 'BAJA de categoría' : 'se mantiene'))"
+    },
+    {
+     "type": "formula",
+     "as": "txt",
+     "expr": "datum.flow_txt + '   ·   ' + datum.det_txt"
+    },
+    {
+     "type": "formula",
+     "as": "d",
+     "expr": "'M' + datum.x0 + ',' + datum.sy0 + 'C' + datum.cm + ',' + datum.sy0 + ' ' + datum.cm + ',' + datum.dy0 + ' ' + datum.x1 + ',' + datum.dy0 + 'L' + datum.x1 + ',' + datum.dy1 + 'C' + datum.cm + ',' + datum.dy1 + ' ' + datum.cm + ',' + datum.sy1 + ' ' + datum.x0 + ',' + datum.sy1 + 'Z'"
+    }
+   ]
+  },
+  {
+   "name": "r_sube",
+   "source": "ribbons",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.dir === 'subio'"
+    },
+    {
+     "type": "aggregate",
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "t"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "r_igual",
+   "source": "ribbons",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.dir === 'igual'"
+    },
+    {
+     "type": "aggregate",
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "t"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "r_baja",
+   "source": "ribbons",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.dir === 'bajo'"
+    },
+    {
+     "type": "aggregate",
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "t"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "detalle",
+   "source": "ribbons",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.clave_flujo === sel"
+    }
+   ]
+  },
+  {
+   "name": "detalle_nodo",
+   "source": "nodos_geo",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.clave_nodo === sel"
+    },
+    {
+     "type": "formula",
+     "as": "flow_txt",
+     "expr": "'Categoría ' + datum.categoria + ' en ' + datum.nombre_corte"
+    },
+    {
+     "type": "formula",
+     "as": "det_txt",
+     "expr": "datum.valor + ' estudiantes (' + format(100 * datum.valor / datum.total_corte, '.0f') + '% de ese corte)'"
+    },
+    {
+     "type": "formula",
+     "as": "txt",
+     "expr": "datum.flow_txt + '   ·   ' + datum.det_txt"
+    }
+   ]
+  },
+  {
+   "name": "leyenda",
+   "source": "ribbons",
+   "transform": [
+    {
+     "type": "aggregate",
+     "groupby": [
+      "dir"
+     ],
+     "fields": [
+      "n"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "t"
+     ]
+    },
+    {
+     "type": "joinaggregate",
+     "fields": [
+      "t"
+     ],
+     "ops": [
+      "sum"
+     ],
+     "as": [
+      "tot"
+     ]
+    },
+    {
+     "type": "formula",
+     "as": "color",
+     "expr": "datum.dir === 'subio' ? '#2E7D32' : (datum.dir === 'bajo' ? '#C62828' : '#9E9E9E')"
+    },
+    {
+     "type": "formula",
+     "as": "txt",
+     "expr": "(datum.dir === 'subio' ? cfg_txt_sube : (datum.dir === 'bajo' ? cfg_txt_baja : cfg_txt_igual)) + datum.t + '  (' + format(100 * datum.t / datum.tot, '.0f') + '%)'"
+    },
+    {
+     "type": "window",
+     "sort": {
+      "field": "dir",
+      "order": "descending"
+     },
+     "ops": [
+      "row_number"
+     ],
+     "as": [
+      "idx"
+     ]
+    },
+    {
+     "type": "formula",
+     "as": "x",
+     "expr": "cx + (datum.idx - 2) * paso_leyenda"
+    }
+   ]
+  },
+  {
+   "name": "habs",
+   "values": [
+    {
+     "value": "Asertividad",
+     "label": "Asertividad",
+     "i": 0,
+     "largo": 11,
+     "p": 0
+    },
+    {
+     "value": "Comunicacion",
+     "label": "Comunicación",
+     "i": 1,
+     "largo": 12,
+     "p": 11
+    },
+    {
+     "value": "Autoestima",
+     "label": "Autoestima",
+     "i": 2,
+     "largo": 10,
+     "p": 23
+    },
+    {
+     "value": "Toma de Decisiones",
+     "label": "Toma de Decisiones",
+     "i": 3,
+     "largo": 18,
+     "p": 33
+    }
+   ],
+   "transform": [
+    {
+     "type": "formula",
+     "as": "x0",
+     "expr": "chip_x_ini + (datum.p + datum.i * cfg_chip_gap_chars) * chip_u"
+    },
+    {
+     "type": "formula",
+     "as": "x1",
+     "expr": "chip_x_ini + (datum.p + datum.largo + datum.i * cfg_chip_gap_chars) * chip_u"
+    },
+    {
+     "type": "formula",
+     "as": "w",
+     "expr": "datum.x1 - datum.x0"
+    }
+   ]
+  },
+  {
+   "name": "etq_ancho",
+   "source": "nodos",
+   "transform": [
+    {
+     "type": "formula",
+     "as": "largo",
+     "expr": "length(datum.categoria) + length(format(datum.valor, 'd')) + length(format(100 * datum.valor / datum.total_corte, '.0f')) + 7"
+    },
+    {
+     "type": "aggregate",
+     "fields": [
+      "largo"
+     ],
+     "ops": [
+      "max"
+     ],
+     "as": [
+      "mx"
+     ]
+    }
+   ]
+  }
+ ],
+ "marks": [
+  {
+   "name": "filtro_etiqueta",
+   "type": "text",
+   "encode": {
+    "enter": {
+     "x": {
+      "signal": "14 * esc"
+     },
+     "y": {
+      "signal": "(chip_y0 + chip_y1) / 2"
+     },
+     "text": {
+      "signal": "cfg_texto_filtro"
+     },
+     "align": {
+      "value": "left"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_chip * esc"
+     },
+     "fontWeight": {
+      "value": 700
+     },
+     "fill": {
+      "signal": "cfg_color_leyenda"
+     }
+    },
+    "update": {
+     "font": {
+      "signal": "cfg_fuente"
+     }
+    }
+   }
+  },
+  {
+   "name": "chip",
+   "type": "rect",
+   "from": {
+    "data": "habs"
+   },
+   "encode": {
+    "enter": {
+     "x": {
+      "field": "x0"
+     },
+     "x2": {
+      "field": "x1"
+     },
+     "y": {
+      "signal": "chip_y0"
+     },
+     "y2": {
+      "signal": "chip_y1"
+     },
+     "cornerRadius": {
+      "signal": "6 * esc"
+     },
+     "cursor": {
+      "value": "pointer"
+     }
+    },
+    "update": {
+     "fill": {
+      "signal": "datum.value === hab_sel ? cfg_chip_activo : cfg_chip_fondo"
+     },
+     "stroke": {
+      "signal": "datum.value === hab_sel ? cfg_chip_activo : cfg_chip_borde"
+     },
+     "strokeWidth": {
+      "signal": "max(1, esc)"
+     }
+    }
+   }
+  },
+  {
+   "name": "chip_txt",
+   "type": "text",
+   "from": {
+    "data": "habs"
+   },
+   "encode": {
+    "enter": {
+     "x": {
+      "signal": "(datum.x0 + datum.x1) / 2"
+     },
+     "y": {
+      "signal": "(chip_y0 + chip_y1) / 2"
+     },
+     "text": {
+      "field": "label"
+     },
+     "align": {
+      "value": "center"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_chip * esc"
+     },
+     "fontWeight": {
+      "value": 600
+     },
+     "cursor": {
+      "value": "pointer"
+     }
+    },
+    "update": {
+     "fill": {
+      "signal": "datum.value === hab_sel ? 'white' : cfg_color_chip_txt"
+     },
+     "font": {
+      "signal": "cfg_fuente"
+     }
+    }
+   }
+  },
+  {
+   "type": "path",
+   "name": "cintas",
+   "from": {
+    "data": "ribbons"
+   },
+   "interactive": true,
+   "encode": {
+    "update": {
+     "path": {
+      "field": "d"
+     },
+     "fill": {
+      "field": "color"
+     },
+     "fillOpacity": {
+      "signal": "sel === '' ? 0.42 : ((datum.clave_flujo === sel || datum.clave_src === sel || datum.clave_dst === sel) ? 0.88 : 0.07)"
+     },
+     "stroke": {
+      "signal": "datum.clave_flujo === sel ? '#193966' : (datum.clave_src === sel || datum.clave_dst === sel ? '#5C6E8F' : null)"
+     },
+     "strokeWidth": {
+      "signal": "datum.clave_flujo === sel ? 1.8 * esc : (datum.clave_src === sel || datum.clave_dst === sel ? max(0.8, esc) : 0)"
+     },
+     "cursor": {
+      "value": "pointer"
+     },
+     "tooltip": {
+      "signal": "datum.txt"
+     }
+    }
+   }
+  },
+  {
+   "type": "rect",
+   "name": "barras",
+   "from": {
+    "data": "nodos_geo"
+   },
+   "encode": {
+    "update": {
+     "x": {
+      "field": "x"
+     },
+     "width": {
+      "signal": "nodo_w"
+     },
+     "y": {
+      "field": "y_top"
+     },
+     "y2": {
+      "field": "y_bot"
+     },
+     "fill": {
+      "scale": "colorNivel",
+      "field": "categoria"
+     },
+     "stroke": {
+      "signal": "datum.clave_nodo === sel || datum.clave_nodo === sel_o || datum.clave_nodo === sel_d ? '#193966' : 'white'"
+     },
+     "strokeWidth": {
+      "signal": "datum.clave_nodo === sel || datum.clave_nodo === sel_o || datum.clave_nodo === sel_d ? 1.8 * esc : max(0.6, 0.8 * esc)"
+     },
+     "cornerRadius": {
+      "value": 1.5
+     },
+     "cursor": {
+      "value": "pointer"
+     },
+     "tooltip": {
+      "signal": "datum.nombre_corte + ' · ' + datum.categoria + ': ' + datum.valor + ' estudiantes (' + format(100 * datum.valor / datum.total_corte, '.0f') + '% del corte)'"
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "name": "etiq_izq",
+   "from": {
+    "data": "nodos_izq"
+   },
+   "encode": {
+    "update": {
+     "x": {
+      "signal": "datum.x - 8 * esc"
+     },
+     "y": {
+      "signal": "(datum.y_top + datum.y_bot) / 2"
+     },
+     "text": {
+      "field": "txt"
+     },
+     "align": {
+      "value": "right"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_etiquetas * esc"
+     },
+     "font": {
+      "signal": "cfg_fuente"
+     },
+     "fill": {
+      "signal": "cfg_color_etiquetas"
+     },
+     "fontWeight": {
+      "signal": "(datum.clave === sel || datum.clave === sel_o || datum.clave === sel_d) ? 700 : 400"
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "name": "etiq_der",
+   "from": {
+    "data": "nodos_der"
+   },
+   "encode": {
+    "update": {
+     "x": {
+      "signal": "datum.x + nodo_w + 8 * esc"
+     },
+     "y": {
+      "signal": "(datum.y_top + datum.y_bot) / 2"
+     },
+     "text": {
+      "field": "txt"
+     },
+     "align": {
+      "value": "left"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_etiquetas * esc"
+     },
+     "font": {
+      "signal": "cfg_fuente"
+     },
+     "fill": {
+      "signal": "cfg_color_etiquetas"
+     },
+     "fontWeight": {
+      "signal": "(datum.clave === sel || datum.clave === sel_o || datum.clave === sel_d) ? 700 : 400"
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "name": "cab_corte",
+   "from": {
+    "data": "cab_cortes"
+   },
+   "encode": {
+    "update": {
+     "x": {
+      "field": "x"
+     },
+     "y": {
+      "signal": "pad_t - 16 * esc"
+     },
+     "text": {
+      "field": "nombre"
+     },
+     "align": {
+      "value": "center"
+     },
+     "baseline": {
+      "value": "bottom"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_cab * esc"
+     },
+     "fontWeight": {
+      "value": 700
+     },
+     "font": {
+      "signal": "cfg_fuente"
+     },
+     "fill": {
+      "signal": "cfg_color_cab"
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "name": "titulo",
+   "encode": {
+    "update": {
+     "x": {
+      "signal": "cx"
+     },
+     "y": {
+      "signal": "pad_t * 0.52"
+     },
+     "text": {
+      "signal": "(acad_txt ? acad_txt + '  ·  ' : '') + cfg_texto_titulo"
+     },
+     "align": {
+      "value": "center"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_titulo * esc"
+     },
+     "fontWeight": {
+      "value": 700
+     },
+     "font": {
+      "signal": "cfg_fuente"
+     },
+     "fill": {
+      "signal": "cfg_color_titulo"
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "name": "subtitulo",
+   "encode": {
+    "update": {
+     "x": {
+      "signal": "cx"
+     },
+     "y": {
+      "signal": "pad_t * 0.71"
+     },
+     "text": {
+      "signal": "hab_lbl + '  ·  ' + n_total + ' estudiantes con ambos cortes'"
+     },
+     "align": {
+      "value": "center"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_subtitulo * esc"
+     },
+     "font": {
+      "signal": "cfg_fuente"
+     },
+     "fill": {
+      "signal": "cfg_color_subtitulo"
+     }
+    }
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "leyenda_punto",
+   "from": {
+    "data": "leyenda"
+   },
+   "encode": {
+    "update": {
+     "x": {
+      "signal": "datum.x - 74 * esc"
+     },
+     "y": {
+      "signal": "H - pad_b + 16 * esc"
+     },
+     "shape": {
+      "value": "square"
+     },
+     "size": {
+      "signal": "90 * esc * esc"
+     },
+     "fill": {
+      "field": "color"
+     },
+     "opacity": {
+      "value": 0.85
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "name": "leyenda_txt",
+   "from": {
+    "data": "leyenda"
+   },
+   "encode": {
+    "update": {
+     "x": {
+      "signal": "datum.x - 64 * esc"
+     },
+     "y": {
+      "signal": "H - pad_b + 16 * esc"
+     },
+     "text": {
+      "field": "txt"
+     },
+     "align": {
+      "value": "left"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_leyenda * esc"
+     },
+     "font": {
+      "signal": "cfg_fuente"
+     },
+     "fill": {
+      "signal": "cfg_color_leyenda"
+     }
+    }
+   }
+  },
+  {
+   "type": "rect",
+   "name": "panel_bg",
+   "encode": {
+    "update": {
+     "x": {
+      "signal": "24 * esc"
+     },
+     "x2": {
+      "signal": "W - 24 * esc"
+     },
+     "y": {
+      "signal": "H - pad_b + 26 * esc"
+     },
+     "y2": {
+      "signal": "H - pad_b + 64 * esc"
+     },
+     "fill": {
+      "signal": "sel ? cfg_panel_sel : cfg_panel_fondo"
+     },
+     "stroke": {
+      "value": "#D8E1EF"
+     },
+     "strokeWidth": {
+      "value": 1
+     },
+     "cornerRadius": {
+      "signal": "4 * esc"
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "name": "panel_txt1",
+   "encode": {
+    "update": {
+     "x": {
+      "signal": "cx"
+     },
+     "y": {
+      "signal": "H - pad_b + 41 * esc"
+     },
+     "text": {
+      "signal": "sel_flow"
+     },
+     "align": {
+      "value": "center"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_panel1 * esc"
+     },
+     "fontWeight": {
+      "value": 600
+     },
+     "font": {
+      "signal": "cfg_fuente"
+     },
+     "fill": {
+      "signal": "cfg_color_panel1"
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "name": "panel_txt2",
+   "encode": {
+    "update": {
+     "x": {
+      "signal": "cx"
+     },
+     "y": {
+      "signal": "H - pad_b + 56 * esc"
+     },
+     "text": {
+      "signal": "sel_det"
+     },
+     "align": {
+      "value": "center"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "signal": "cfg_fs_panel2 * esc"
+     },
+     "font": {
+      "signal": "cfg_fuente"
+     },
+     "fill": {
+      "signal": "cfg_color_panel2"
+     }
+    }
+   }
+  }
+ ]
+}

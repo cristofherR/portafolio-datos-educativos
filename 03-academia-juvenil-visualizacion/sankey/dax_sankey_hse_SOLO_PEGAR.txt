@@ -1,0 +1,110 @@
+// =====================================================================
+//  Sankey_HSE_Flujos  --  v7  ·  FILTRA CON TUS SLICERS ACTUALES
+//  Compatible con:  deneb_sankey_hse_v8_SOLO_PEGAR.json
+// ---------------------------------------------------------------------
+//  NO hace falta CSV, ni merge, ni LOOKUPVALUE, ni DATATABLE.
+//  Tus dimensiones YA existen y YA filtran la pagina.
+//  Da ellos al grafico con UNA sola relacion:
+//
+//   Modelado > Administrar relaciones > Nueva relacion
+//     Desde (1) : bd_evaluaciones estudiantes   ->  columna clave del alumno
+//     Hasta (*) : Sankey_HSE_Flujos             ->  Clave_Alumno
+//     Direccion : unica, activa, "Asumir integridad referencial" ON
+//
+//  Cadena resultante (sin trabajo extra):
+//     bd_evaluaciones salones [Academia, Centro_poblado,
+//                              Institucion_educativa, nombre(aula)]
+//        -> bd_evaluaciones estudiantes [Grado]
+//        -> Sankey_HSE_Flujos   ==>  el grafico obedece a los 5 filtros.
+//
+//  Grano: 1 fila por ALUMNO x HABILIDAD, N = 1  (1.946 filas)
+//  Control:  COUNTROWS(Sankey_HSE_Flujos) = 1.946
+//            SUM(Sankey_HSE_Flujos[N])     = 1.946
+// =====================================================================
+
+Sankey_HSE_Flujos =
+
+VAR PK_Inicio  = "<UUID_EVALUACION_INICIO>"    // TODO: colocar tu propio ID
+VAR PK_Proceso = "<UUID_EVALUACION_PROCESO>"   // TODO: colocar tu propio ID
+
+// 1) Las dos evaluaciones HSE, solo filas con respuestas
+VAR HSE =
+    FILTER(
+        'bd_evaluaciones evaluaciones',
+        'bd_evaluaciones evaluaciones'[fk_caracteristica_evaluacion] IN { PK_Inicio, PK_Proceso }
+            && NOT ISBLANK( 'bd_evaluaciones evaluaciones'[respuestas.preg_1] )
+    )
+
+// 2) Una fila por ALUMNO con su categoria en Inicio y en Proceso
+VAR Pivote =
+    ADDCOLUMNS(
+        SUMMARIZE( HSE, 'bd_evaluaciones evaluaciones'[fk_evaluado] ),
+        "@As_o", CALCULATE( MAX( 'bd_evaluaciones evaluaciones'[Categoria Asertividad]    ), 'bd_evaluaciones evaluaciones'[fk_caracteristica_evaluacion] = PK_Inicio  ),
+        "@As_d", CALCULATE( MAX( 'bd_evaluaciones evaluaciones'[Categoria Asertividad]    ), 'bd_evaluaciones evaluaciones'[fk_caracteristica_evaluacion] = PK_Proceso ),
+        "@Co_o", CALCULATE( MAX( 'bd_evaluaciones evaluaciones'[Categoria Comunicacion]   ), 'bd_evaluaciones evaluaciones'[fk_caracteristica_evaluacion] = PK_Inicio  ),
+        "@Co_d", CALCULATE( MAX( 'bd_evaluaciones evaluaciones'[Categoria Comunicacion]   ), 'bd_evaluaciones evaluaciones'[fk_caracteristica_evaluacion] = PK_Proceso ),
+        "@Au_o", CALCULATE( MAX( 'bd_evaluaciones evaluaciones'[Categoria Autoestima]     ), 'bd_evaluaciones evaluaciones'[fk_caracteristica_evaluacion] = PK_Inicio  ),
+        "@Au_d", CALCULATE( MAX( 'bd_evaluaciones evaluaciones'[Categoria Autoestima]     ), 'bd_evaluaciones evaluaciones'[fk_caracteristica_evaluacion] = PK_Proceso ),
+        "@Td_o", CALCULATE( MAX( 'bd_evaluaciones evaluaciones'[Categoria TomaDecisiones] ), 'bd_evaluaciones evaluaciones'[fk_caracteristica_evaluacion] = PK_Inicio  ),
+        "@Td_d", CALCULATE( MAX( 'bd_evaluaciones evaluaciones'[Categoria TomaDecisiones] ), 'bd_evaluaciones evaluaciones'[fk_caracteristica_evaluacion] = PK_Proceso )
+    )
+
+// 3) Academia: columna que exige el spec v8 (filtro interno del visual)
+//    Las 4 dimensiones restantes (IE, Centro Poblado, Grado, Aula) NO se
+//    copian aqui: entran por RELACION desde vuestras tablas reales.
+VAR Dims =
+    ADDCOLUMNS( Pivote, "@Acad", "AJ Áncash" )
+
+// 4) Solo alumnos CON AMBOS cortes, por habilidad
+VAR Par_As = FILTER( Dims, NOT ISBLANK([@As_o]) && NOT ISBLANK([@As_d]) )
+VAR Par_Co = FILTER( Dims, NOT ISBLANK([@Co_o]) && NOT ISBLANK([@Co_d]) )
+VAR Par_Au = FILTER( Dims, NOT ISBLANK([@Au_o]) && NOT ISBLANK([@Au_d]) )
+VAR Par_Td = FILTER( Dims, NOT ISBLANK([@Td_o]) && NOT ISBLANK([@Td_d]) )
+
+// 5) Una fila por alumno-habilidad, N = 1. El grafico (v8) agrupa.
+VAR F_As =
+    SELECTCOLUMNS( Par_As,
+        "Clave_Alumno", [fk_evaluado],
+        "Habilidad", "Asertividad",
+        "Academia", [@Acad], "Corte_Origen", "Inicio", "Corte_Destino", "Proceso",
+        "Orden_Corte_Origen", 0, "Orden_Corte_Destino", 1,
+        "Categoria_Origen", [@As_o], "Categoria_Destino", [@As_d],
+        "Orden_Cat_Origen",  SWITCH( [@As_o], "MUY BAJO",1, "BAJO",2, "PROMEDIO BAJO",3, "PROMEDIO",4, "PROMEDIO ALTO",5, "ALTO",6, "MUY ALTO",7 ),
+        "Orden_Cat_Destino", SWITCH( [@As_d], "MUY BAJO",1, "BAJO",2, "PROMEDIO BAJO",3, "PROMEDIO",4, "PROMEDIO ALTO",5, "ALTO",6, "MUY ALTO",7 ),
+        "N", 1 )
+
+VAR F_Co =
+    SELECTCOLUMNS( Par_Co,
+        "Clave_Alumno", [fk_evaluado],
+        "Habilidad", "Comunicacion",
+        "Academia", [@Acad], "Corte_Origen", "Inicio", "Corte_Destino", "Proceso",
+        "Orden_Corte_Origen", 0, "Orden_Corte_Destino", 1,
+        "Categoria_Origen", [@Co_o], "Categoria_Destino", [@Co_d],
+        "Orden_Cat_Origen",  SWITCH( [@Co_o], "MUY BAJO",1, "BAJO",2, "PROMEDIO BAJO",3, "PROMEDIO",4, "PROMEDIO ALTO",5, "ALTO",6, "MUY ALTO",7 ),
+        "Orden_Cat_Destino", SWITCH( [@Co_d], "MUY BAJO",1, "BAJO",2, "PROMEDIO BAJO",3, "PROMEDIO",4, "PROMEDIO ALTO",5, "ALTO",6, "MUY ALTO",7 ),
+        "N", 1 )
+
+VAR F_Au =
+    SELECTCOLUMNS( Par_Au,
+        "Clave_Alumno", [fk_evaluado],
+        "Habilidad", "Autoestima",
+        "Academia", [@Acad], "Corte_Origen", "Inicio", "Corte_Destino", "Proceso",
+        "Orden_Corte_Origen", 0, "Orden_Corte_Destino", 1,
+        "Categoria_Origen", [@Au_o], "Categoria_Destino", [@Au_d],
+        "Orden_Cat_Origen",  SWITCH( [@Au_o], "MUY BAJO",1, "BAJO",2, "PROMEDIO BAJO",3, "PROMEDIO",4, "PROMEDIO ALTO",5, "ALTO",6, "MUY ALTO",7 ),
+        "Orden_Cat_Destino", SWITCH( [@Au_d], "MUY BAJO",1, "BAJO",2, "PROMEDIO BAJO",3, "PROMEDIO",4, "PROMEDIO ALTO",5, "ALTO",6, "MUY ALTO",7 ),
+        "N", 1 )
+
+VAR F_Td =
+    SELECTCOLUMNS( Par_Td,
+        "Clave_Alumno", [fk_evaluado],
+        "Habilidad", "Toma de Decisiones",
+        "Academia", [@Acad], "Corte_Origen", "Inicio", "Corte_Destino", "Proceso",
+        "Orden_Corte_Origen", 0, "Orden_Corte_Destino", 1,
+        "Categoria_Origen", [@Td_o], "Categoria_Destino", [@Td_d],
+        "Orden_Cat_Origen",  SWITCH( [@Td_o], "MUY BAJO",1, "BAJO",2, "PROMEDIO BAJO",3, "PROMEDIO",4, "PROMEDIO ALTO",5, "ALTO",6, "MUY ALTO",7 ),
+        "Orden_Cat_Destino", SWITCH( [@Td_d], "MUY BAJO",1, "BAJO",2, "PROMEDIO BAJO",3, "PROMEDIO",4, "PROMEDIO ALTO",5, "ALTO",6, "MUY ALTO",7 ),
+        "N", 1 )
+
+RETURN
+    UNION( F_As, F_Co, F_Au, F_Td )

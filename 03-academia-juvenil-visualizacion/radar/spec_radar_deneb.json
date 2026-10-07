@@ -1,0 +1,575 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "data": {
+  "name": "dataset"
+ },
+ "params": [
+  {
+   "name": "filtro_prueba",
+   "value": "HSE Academia Juvenil|HSE"
+  }
+ ],
+ "transform": [
+  {
+   "calculate": "split(filtro_prueba, '|')[0]",
+   "as": "_fp"
+  },
+  {
+   "calculate": "split(filtro_prueba, '|')[1]",
+   "as": "_fa"
+  },
+  {
+   "filter": "datum.Prueba == datum._fp && datum.Area == datum._fa"
+  },
+  {
+   "calculate": "2 * PI * (datum.idx - 1) / datum.N",
+   "as": "theta"
+  },
+  {
+   "calculate": "170 + 105 * (datum.Pct_Estudiante/100) * sin(datum.theta)",
+   "as": "x_est"
+  },
+  {
+   "calculate": "215 + 105 * (datum.Pct_Estudiante/100) * cos(datum.theta)",
+   "as": "y_est"
+  },
+  {
+   "calculate": "170 + 105 * (datum.Pct_Aula/100) * sin(datum.theta)",
+   "as": "x_aula"
+  },
+  {
+   "calculate": "215 + 105 * (datum.Pct_Aula/100) * cos(datum.theta)",
+   "as": "y_aula"
+  },
+  {
+   "calculate": "170 + 139 * sin(datum.theta)",
+   "as": "x_lbl"
+  },
+  {
+   "calculate": "215 + 139 * cos(datum.theta)",
+   "as": "y_lbl"
+  },
+  {
+   "calculate": "170 + 105 * sin(datum.theta)",
+   "as": "x_rad"
+  },
+  {
+   "calculate": "215 + 105 * cos(datum.theta)",
+   "as": "y_rad"
+  },
+  {
+   "calculate": "format(datum.Pct_Estudiante, '.0f') + '%'",
+   "as": "pct_txt"
+  }
+ ],
+ "width": 340,
+ "height": 400,
+ "layer": [
+  {
+   "mark": {
+    "type": "rect",
+    "cornerRadius": 8,
+    "fill": "#1D3557"
+   },
+   "encoding": {
+    "x": {
+     "datum": 20,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "x2": {
+     "datum": 320
+    },
+    "y": {
+     "datum": 358,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "y2": {
+     "datum": 390
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontSize": 14,
+    "fontWeight": "bold",
+    "fill": "white",
+    "align": "center",
+    "baseline": "middle"
+   },
+   "encoding": {
+    "x": {
+     "datum": 170.0,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "datum": 374,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "text": {
+     "field": "Titulo",
+     "type": "nominal"
+    }
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "r": 26.25
+     },
+     {
+      "r": 52.5
+     },
+     {
+      "r": 78.75
+     },
+     {
+      "r": 105
+     }
+    ]
+   },
+   "transform": [
+    {
+     "calculate": "pow(datum.r * 2, 2)",
+     "as": "s"
+    }
+   ],
+   "mark": {
+    "type": "circle",
+    "fill": "none",
+    "stroke": "#D5DBE0",
+    "strokeWidth": 1
+   },
+   "encoding": {
+    "x": {
+     "datum": 170,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "datum": 215,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "size": {
+     "field": "s",
+     "type": "quantitative",
+     "scale": null
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "rule",
+    "stroke": "#D5DBE0",
+    "strokeWidth": 1
+   },
+   "encoding": {
+    "x": {
+     "datum": 170,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "datum": 215,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "x2": {
+     "field": "x_rad",
+     "type": "quantitative"
+    },
+    "y2": {
+     "field": "y_rad",
+     "type": "quantitative"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "line",
+    "interpolate": "linear-closed",
+    "stroke": "#9AA5B1",
+    "strokeWidth": 1.5,
+    "strokeDash": [
+     5,
+     4
+    ],
+    "opacity": 0.9
+   },
+   "encoding": {
+    "x": {
+     "field": "x_aula",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y_aula",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "order": {
+     "field": "idx",
+     "type": "quantitative"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "line",
+    "interpolate": "linear-closed",
+    "stroke": "#1D3557",
+    "strokeWidth": 2.5
+   },
+   "encoding": {
+    "x": {
+     "field": "x_est",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y_est",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "order": {
+     "field": "idx",
+     "type": "quantitative"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "circle",
+    "size": 90,
+    "fill": "#1D3557",
+    "stroke": "white",
+    "strokeWidth": 1.5
+   },
+   "encoding": {
+    "x": {
+     "field": "x_est",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y_est",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "fill": "#333333",
+    "align": "center",
+    "baseline": "middle"
+   },
+   "encoding": {
+    "x": {
+     "field": "x_lbl",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y_lbl",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "text": {
+     "field": "Habilidad",
+     "type": "nominal"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontSize": 10.5,
+    "fontWeight": "bold",
+    "fill": "#1D3557",
+    "align": "center",
+    "baseline": "middle",
+    "dy": -2
+   },
+   "encoding": {
+    "x": {
+     "field": "x_est",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y_est",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "text": {
+     "field": "pct_txt",
+     "type": "nominal"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "rect",
+    "cornerRadius": 2,
+    "fill": "#1D3557"
+   },
+   "encoding": {
+    "x": {
+     "datum": 88,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "x2": {
+     "datum": 100
+    },
+    "y": {
+     "datum": 12,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "y2": {
+     "datum": 24
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontSize": 11,
+    "fill": "#333333",
+    "align": "left",
+    "baseline": "middle"
+   },
+   "encoding": {
+    "x": {
+     "datum": 106,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "datum": 18,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "text": {
+     "value": "Estudiante"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "rect",
+    "cornerRadius": 2,
+    "fill": "#9AA5B1"
+   },
+   "encoding": {
+    "x": {
+     "datum": 196,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "x2": {
+     "datum": 208
+    },
+    "y": {
+     "datum": 12,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "y2": {
+     "datum": 24
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontSize": 11,
+    "fill": "#333333",
+    "align": "left",
+    "baseline": "middle"
+   },
+   "encoding": {
+    "x": {
+     "datum": 214,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       340
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "datum": 18,
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       0,
+       400
+      ]
+     },
+     "axis": null
+    },
+    "text": {
+     "value": "Prom. aula"
+    }
+   }
+  }
+ ]
+}

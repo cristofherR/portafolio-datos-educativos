@@ -1,0 +1,193 @@
+{
+ "generado_por": "tools/make_synthetic_examples.py",
+ "aviso": "Datos sintéticos de ejemplo. No provienen de estudiantes reales.",
+ "sankey": {
+  "AJ EJEMPLO ALFA|Asertividad": {
+   "academia": "AJ EJEMPLO ALFA",
+   "habilidad": "Asertividad",
+   "n": 120,
+   "niveles_inicio": {
+    "PROMEDIO BAJO": 23,
+    "PROMEDIO ALTO": 14,
+    "PROMEDIO": 26,
+    "MUY BAJO": 11,
+    "BAJO": 19,
+    "MUY ALTO": 10,
+    "ALTO": 17
+   },
+   "niveles_proceso": {
+    "PROMEDIO": 23,
+    "ALTO": 13,
+    "PROMEDIO ALTO": 21,
+    "MUY BAJO": 7,
+    "BAJO": 14,
+    "PROMEDIO BAJO": 28,
+    "MUY ALTO": 14
+   },
+   "flujos": {
+    "PROMEDIO BAJO -> PROMEDIO": 12,
+    "PROMEDIO ALTO -> ALTO": 6,
+    "PROMEDIO -> PROMEDIO ALTO": 10,
+    "MUY BAJO -> MUY BAJO": 6,
+    "MUY BAJO -> BAJO": 5,
+    "BAJO -> PROMEDIO BAJO": 12,
+    "PROMEDIO -> PROMEDIO BAJO": 8,
+    "PROMEDIO ALTO -> PROMEDIO": 3,
+    "MUY ALTO -> MUY ALTO": 9,
+    "ALTO -> MUY ALTO": 5,
+    "PROMEDIO BAJO -> BAJO": 3,
+    "PROMEDIO BAJO -> PROMEDIO BAJO": 8,
+    "PROMEDIO ALTO -> PROMEDIO ALTO": 5,
+    "PROMEDIO -> PROMEDIO": 8,
+    "BAJO -> BAJO": 6,
+    "ALTO -> PROMEDIO ALTO": 6,
+    "ALTO -> ALTO": 6,
+    "MUY ALTO -> ALTO": 1,
+    "BAJO -> MUY BAJO": 1
+   },
+   "subieron": 56,
+   "bajaron": 24,
+   "mismo": 40
+  },
+  "AJ EJEMPLO ALFA|Comunicación": {
+   "academia": "AJ EJEMPLO ALFA",
+   "habilidad": "Comunicación",
+   "n": 120,
+   "niveles_inicio": {
+    "PROMEDIO BAJO": 22,
+    "BAJO": 23,
+    "PROMEDIO": 32,
+    "MUY BAJO": 9,
+    "PROMEDIO ALTO": 21,
+    "ALTO": 8,
+    "MUY ALTO": 5
+   },
+   "niveles_proceso": {
+    "PROMEDIO": 33,
+    "MUY BAJO": 11,
+    "PROMEDIO BAJO": 23,
+    "PROMEDIO ALTO": 22,
+    "BAJO": 16,
+    "MUY ALTO": 8,
+    "ALTO": 7
+   },
+   "flujos": {
+    "PROMEDIO BAJO -> PROMEDIO": 13,
+    "BAJO -> MUY BAJO": 8,
+    "PROMEDIO BAJO -> PROMEDIO BAJO": 5,
+    "PROMEDIO -> PROMEDIO BAJO": 9,
+    "PROMEDIO -> PROMEDIO": 13,
+    "PROMEDIO -> PROMEDIO ALTO": 10,
+    "MUY BAJO -> MUY BAJO": 3,
+    "BAJO -> BAJO": 6,
+    "PROMEDIO ALTO -> PROMEDIO ALTO": 10,
+    "ALTO -> MUY ALTO": 4,
+    "PROMEDIO ALTO -> PROMEDIO": 7,
+    "MUY ALTO -> MUY ALTO": 4,
+    "BAJO -> PROMEDIO BAJO": 9,
+    "PROMEDIO ALTO -> ALTO": 4,
+    "ALTO -> PROMEDIO ALTO": 2,
+    "PROMEDIO BAJO -> BAJO": 4,
+    "MUY ALTO -> ALTO": 1,
+    "MUY BAJO -> BAJO": 6,
+    "ALTO -> ALTO": 2
+   },
+   "subieron": 49,
+   "bajaron": 32,
+   "mismo": 39
+  },
+  "AJ EJEMPLO BETA|Asertividad": {
+   "academia": "AJ EJEMPLO BETA",
+   "habilidad": "Asertividad",
+   "n": 120,
+   "niveles_inicio": {
+    "PROMEDIO ALTO": 21,
+    "BAJO": 11,
+    "PROMEDIO": 32,
+    "ALTO": 16,
+    "MUY ALTO": 12,
+    "MUY BAJO": 5,
+    "PROMEDIO BAJO": 23
+   },
+   "niveles_proceso": {
+    "ALTO": 18,
+    "PROMEDIO BAJO": 16,
+    "PROMEDIO": 23,
+    "PROMEDIO ALTO": 32,
+    "MUY ALTO": 17,
+    "MUY BAJO": 6,
+    "BAJO": 8
+   },
+   "flujos": {
+    "PROMEDIO ALTO -> ALTO": 11,
+    "BAJO -> PROMEDIO BAJO": 9,
+    "PROMEDIO ALTO -> PROMEDIO": 3,
+    "PROMEDIO -> PROMEDIO ALTO": 21,
+    "PROMEDIO -> PROMEDIO": 8,
+    "PROMEDIO ALTO -> PROMEDIO ALTO": 7,
+    "ALTO -> MUY ALTO": 7,
+    "MUY ALTO -> ALTO": 2,
+    "MUY BAJO -> MUY BAJO": 5,
+    "ALTO -> PROMEDIO ALTO": 4,
+    "PROMEDIO BAJO -> BAJO": 7,
+    "PROMEDIO BAJO -> PROMEDIO BAJO": 4,
+    "BAJO -> BAJO": 1,
+    "MUY ALTO -> MUY ALTO": 10,
+    "ALTO -> ALTO": 5,
+    "PROMEDIO BAJO -> PROMEDIO": 12,
+    "BAJO -> MUY BAJO": 1,
+    "PROMEDIO -> PROMEDIO BAJO": 3
+   },
+   "subieron": 65,
+   "bajaron": 20,
+   "mismo": 35
+  },
+  "AJ EJEMPLO BETA|Comunicación": {
+   "academia": "AJ EJEMPLO BETA",
+   "habilidad": "Comunicación",
+   "n": 120,
+   "niveles_inicio": {
+    "PROMEDIO ALTO": 20,
+    "BAJO": 14,
+    "PROMEDIO BAJO": 25,
+    "ALTO": 19,
+    "MUY ALTO": 11,
+    "PROMEDIO": 23,
+    "MUY BAJO": 8
+   },
+   "niveles_proceso": {
+    "PROMEDIO": 24,
+    "PROMEDIO BAJO": 23,
+    "BAJO": 12,
+    "PROMEDIO ALTO": 18,
+    "MUY ALTO": 18,
+    "ALTO": 19,
+    "MUY BAJO": 6
+   },
+   "flujos": {
+    "PROMEDIO ALTO -> PROMEDIO": 6,
+    "BAJO -> PROMEDIO BAJO": 9,
+    "PROMEDIO BAJO -> BAJO": 5,
+    "ALTO -> PROMEDIO ALTO": 5,
+    "MUY ALTO -> MUY ALTO": 9,
+    "PROMEDIO ALTO -> ALTO": 12,
+    "PROMEDIO -> PROMEDIO ALTO": 11,
+    "PROMEDIO BAJO -> PROMEDIO": 14,
+    "ALTO -> MUY ALTO": 9,
+    "MUY BAJO -> MUY BAJO": 5,
+    "PROMEDIO -> PROMEDIO BAJO": 8,
+    "MUY BAJO -> BAJO": 3,
+    "PROMEDIO BAJO -> PROMEDIO BAJO": 6,
+    "ALTO -> ALTO": 5,
+    "MUY ALTO -> ALTO": 2,
+    "PROMEDIO -> PROMEDIO": 4,
+    "BAJO -> BAJO": 4,
+    "PROMEDIO ALTO -> PROMEDIO ALTO": 2,
+    "BAJO -> MUY BAJO": 1
+   },
+   "subieron": 65,
+   "bajaron": 28,
+   "mismo": 27
+  }
+ }
+}

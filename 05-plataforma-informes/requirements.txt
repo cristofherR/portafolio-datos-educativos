@@ -1,0 +1,11 @@
+# Plataforma web de descarga de informes
+fastapi
+uvicorn
+bcrypt
+python-multipart
+
+# Pipeline de consolidación y generación de informes
+psycopg2-binary
+PyMuPDF
+jinja2
+openpyxl

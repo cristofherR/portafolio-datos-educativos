@@ -1,0 +1,54 @@
+{
+  "_comentario": "EJEMPLO SINTÉTICO. Nombres y datos 100% ficticios para probar la plataforma sin datos reales. El archivo real (web/data/estudiantes.json) nunca se versiona.",
+  "generado": "2026-01-01 00:00",
+  "total": 3,
+  "completos": 2,
+  "sin_informe": 1,
+  "estudiantes": [
+    {
+      "clave": "00000000-0000-0000-0000-0000000000a1",
+      "dni": "ajdemo",
+      "estudiante": "DEMO ALFA, Estudiante Uno",
+      "genero": "F",
+      "academia": "AJ Demostración",
+      "ie": "IE Ejemplo 1",
+      "centro_poblado": "Centro Poblado Ejemplo",
+      "grado": "4",
+      "aula": "AGROP 1",
+      "seccion": "A",
+      "archivo": "AJ_2026_DEMO_ALFA_Estudiante_Uno.pdf",
+      "completo": true,
+      "faltan": []
+    },
+    {
+      "clave": "00000000-0000-0000-0000-0000000000a2",
+      "dni": "ajdemo",
+      "estudiante": "DEMO BETA, Estudiante Dos",
+      "genero": "M",
+      "academia": "AJ Demostración",
+      "ie": "IE Ejemplo 1",
+      "centro_poblado": "Centro Poblado Ejemplo",
+      "grado": "4",
+      "aula": "AGROP 1",
+      "seccion": "A",
+      "archivo": "AJ_2026_DEMO_BETA_Estudiante_Dos.pdf",
+      "completo": false,
+      "faltan": ["socioemocional"]
+    },
+    {
+      "clave": "00000000-0000-0000-0000-0000000000a3",
+      "dni": "ajdemo",
+      "estudiante": "DEMO GAMMA, Estudiante Tres",
+      "genero": "F",
+      "academia": "AJ Demostración",
+      "ie": "IE Ejemplo 2",
+      "centro_poblado": "Otro Centro Poblado",
+      "grado": "5",
+      "aula": "TEC 1",
+      "seccion": "B",
+      "archivo": null,
+      "completo": false,
+      "faltan": ["academico", "socioemocional"]
+    }
+  ]
+}

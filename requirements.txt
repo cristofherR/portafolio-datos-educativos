@@ -1,0 +1,10 @@
+# Dependencias del portafolio
+# Instalación:  pip install -r requirements.txt
+
+pandas>=2.0
+openpyxl>=3.1          # lectura/escritura de Excel (generador de datos sintéticos)
+matplotlib>=3.7        # diagramas Sankey (PNG/PDF)
+requests>=2.31         # descarga opcional de plantillas
+
+# Opcional: solo si vas a cargar el ETL a PostgreSQL
+# psycopg2-binary>=2.9

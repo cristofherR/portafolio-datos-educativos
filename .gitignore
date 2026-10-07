@@ -1,0 +1,42 @@
+# Datos y credenciales: NUNCA versionar
+*.xlsx
+*.xls
+*.zip
+*.pdf
+*.docx
+*.png
+*.jpg
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# Salidas generadas
+salidas/
+
+# Backups y temporales
+*.bak
+*.log
+*.tmp
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Datos institucionales / respaldos
+backup_*
+*_backup_*
+
+# ── Excepciones: ejemplos SINTÉTICOS (permiten reproducir el repo) ──
+!01-cca-primera-infancia/python/cca_sheet_data.csv
+!03-academia-juvenil-visualizacion/data/synthetic/*.json
+
+# ── Plataforma de informes (05): nada real, solo ejemplos ──
+05-plataforma-informes/config/evaluaciones.json
+05-plataforma-informes/**/.env
+05-plataforma-informes/**/.env.*
+!05-plataforma-informes/.env.example
+05-plataforma-informes/web/data/
+05-plataforma-informes/informes_2026/
+!05-plataforma-informes/data/ejemplo_estudiantes.json

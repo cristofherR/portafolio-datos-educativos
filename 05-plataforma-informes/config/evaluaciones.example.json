@@ -1,0 +1,9 @@
+{
+  "_comentario": "Identificadores de las evaluaciones en la base institucional. Copia este archivo a evaluaciones.json y coloca los tuyos. NUNCA subas el archivo real: va en .gitignore.",
+  "tov_proceso": "00000000-0000-0000-0000-000000000001",
+  "hse_inicio": "00000000-0000-0000-0000-000000000002",
+  "hse_proceso": "00000000-0000-0000-0000-000000000003",
+  "pronabec_comunicacion": "00000000-0000-0000-0000-000000000004",
+  "pronabec_matematica": "00000000-0000-0000-0000-000000000005",
+  "coar": "00000000-0000-0000-0000-000000000006"
+}
