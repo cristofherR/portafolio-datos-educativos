@@ -1,0 +1,459 @@
+{
+ "$schema": "https://vega.github.io/schema/vega/v6.json",
+ "description": "[RESPONSIVO · container] TOV Áncash · dataset = Power BI",
+ "autosize": {
+  "type": "fit",
+  "contains": "padding"
+ },
+ "background": "transparent",
+ "padding": 6,
+ "style": "cell",
+ "data": [
+  {
+   "name": "dataset"
+  },
+  {
+   "name": "source_0",
+   "values": [
+    {
+     "u": 3.41
+    }
+   ]
+  },
+  {
+   "name": "data_0",
+   "source": "dataset",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum.valor)"
+    },
+    {
+     "type": "aggregate",
+     "groupby": [
+      "area"
+     ],
+     "ops": [
+      "mean",
+      "valid"
+     ],
+     "fields": [
+      "valor",
+      "valor"
+     ],
+     "as": [
+      "promedio",
+      "n"
+     ]
+    },
+    {
+     "type": "formula",
+     "expr": "datum.promedio == 0 ? 'Sin datos' : datum.promedio <= 1.80 ? 'Desacuerdo marcado' : datum.promedio <= 2.60 ? 'Desacuerdo' : datum.promedio <= 3.40 ? 'Posición intermedia' : datum.promedio <= 4.20 ? 'Acuerdo' : 'Acuerdo marcado'",
+     "as": "descriptor"
+    }
+   ]
+  },
+  {
+   "name": "data_1",
+   "source": "data_0",
+   "transform": [
+    {
+     "type": "formula",
+     "expr": "indexof([\"Desacuerdo marcado\",\"Desacuerdo\",\"Posición intermedia\",\"Acuerdo\",\"Acuerdo marcado\"], datum['descriptor'])",
+     "as": "_descriptor_sort_index"
+    }
+   ]
+  },
+  {
+   "name": "data_2",
+   "source": "data_1",
+   "transform": [
+    {
+     "type": "stack",
+     "groupby": [
+      "area"
+     ],
+     "field": "promedio",
+     "sort": {
+      "field": [
+       "_descriptor_sort_index"
+      ],
+      "order": [
+       "ascending"
+      ]
+     },
+     "as": [
+      "promedio_start",
+      "promedio_end"
+     ],
+     "offset": "zero"
+    },
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"promedio\"]) && isFinite(+datum[\"promedio\"])"
+    }
+   ]
+  },
+  {
+   "name": "data_3",
+   "source": "data_0",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"promedio\"]) && isFinite(+datum[\"promedio\"])"
+    }
+   ]
+  },
+  {
+   "name": "data_4",
+   "source": "source_0",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"u\"]) && isFinite(+datum[\"u\"])"
+    }
+   ]
+  }
+ ],
+ "signals": [
+  {
+   "name": "width",
+   "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+   "on": [
+    {
+     "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+     "events": "window:resize"
+    }
+   ]
+  },
+  {
+   "name": "height",
+   "init": "isFinite(containerSize()[1]) ? containerSize()[1] : 300",
+   "on": [
+    {
+     "update": "isFinite(containerSize()[1]) ? containerSize()[1] : 300",
+     "events": "window:resize"
+    }
+   ]
+  }
+ ],
+ "marks": [
+  {
+   "name": "layer_0_marks",
+   "type": "rule",
+   "style": [
+    "rule"
+   ],
+   "from": {
+    "data": "data_4"
+   },
+   "encode": {
+    "update": {
+     "strokeWidth": {
+      "value": 1.4
+     },
+     "strokeDash": {
+      "value": [
+       5,
+       4
+      ]
+     },
+     "stroke": {
+      "value": "#F0A868"
+     },
+     "description": {
+      "signal": "\"u: \" + (format(datum[\"u\"], \"\"))"
+     },
+     "x": {
+      "scale": "x",
+      "field": "u"
+     },
+     "y": {
+      "value": 0
+     },
+     "y2": {
+      "field": {
+       "group": "height"
+      }
+     }
+    }
+   }
+  },
+  {
+   "type": "group",
+   "from": {
+    "facet": {
+     "data": "data_2",
+     "name": "stack_group_layer_1_main",
+     "groupby": [
+      "area"
+     ],
+     "aggregate": {
+      "fields": [
+       "promedio_start",
+       "promedio_start",
+       "promedio_end",
+       "promedio_end"
+      ],
+      "ops": [
+       "min",
+       "max",
+       "min",
+       "max"
+      ]
+     }
+    }
+   },
+   "encode": {
+    "update": {
+     "y": {
+      "scale": "y",
+      "field": "area"
+     },
+     "height": {
+      "signal": "max(0.25, bandwidth('y'))"
+     },
+     "cornerRadiusTopRight": {
+      "value": 2
+     },
+     "cornerRadiusBottomRight": {
+      "value": 2
+     },
+     "x": {
+      "signal": "min(scale('x',datum[\"min_promedio_start\"]),scale('x',datum[\"max_promedio_start\"]),scale('x',datum[\"min_promedio_end\"]),scale('x',datum[\"max_promedio_end\"]))"
+     },
+     "x2": {
+      "signal": "max(scale('x',datum[\"min_promedio_start\"]),scale('x',datum[\"max_promedio_start\"]),scale('x',datum[\"min_promedio_end\"]),scale('x',datum[\"max_promedio_end\"]))"
+     },
+     "clip": {
+      "value": true
+     }
+    }
+   },
+   "marks": [
+    {
+     "type": "group",
+     "encode": {
+      "update": {
+       "x": {
+        "field": {
+         "group": "x"
+        },
+        "mult": -1
+       },
+       "height": {
+        "field": {
+         "group": "height"
+        }
+       }
+      }
+     },
+     "marks": [
+      {
+       "name": "layer_1_marks",
+       "type": "rect",
+       "style": [
+        "bar"
+       ],
+       "from": {
+        "data": "stack_group_layer_1_main"
+       },
+       "encode": {
+        "update": {
+         "fill": {
+          "scale": "color",
+          "field": "descriptor"
+         },
+         "tooltip": {
+          "signal": "{\"Área\": isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], '\\n') : datum[\"area\"] : \"\"+datum[\"area\"], \"Promedio\": format(datum[\"promedio\"], \".2f\"), \"n válido\": format(datum[\"n\"], \"\"), \"Descriptor\": isValid(datum[\"descriptor\"]) ? isArray(datum[\"descriptor\"]) ? join(datum[\"descriptor\"], '\\n') : datum[\"descriptor\"] : \"\"+datum[\"descriptor\"]}"
+         },
+         "ariaRoleDescription": {
+          "value": "bar"
+         },
+         "description": {
+          "signal": "\"promedio: \" + (format(datum[\"promedio\"], \"\")) + \"; area: \" + (isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], ' ') : datum[\"area\"] : \"\"+datum[\"area\"]) + \"; descriptor: \" + (isValid(datum[\"descriptor\"]) ? isArray(datum[\"descriptor\"]) ? join(datum[\"descriptor\"], ' ') : datum[\"descriptor\"] : \"\"+datum[\"descriptor\"]) + \"; Área: \" + (isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], ' ') : datum[\"area\"] : \"\"+datum[\"area\"]) + \"; Promedio: \" + (format(datum[\"promedio\"], \".2f\")) + \"; n válido: \" + (format(datum[\"n\"], \"\")) + \"; Descriptor: \" + (isValid(datum[\"descriptor\"]) ? isArray(datum[\"descriptor\"]) ? join(datum[\"descriptor\"], ' ') : datum[\"descriptor\"] : \"\"+datum[\"descriptor\"])"
+         },
+         "x": {
+          "scale": "x",
+          "field": "promedio_end"
+         },
+         "x2": {
+          "scale": "x",
+          "field": "promedio_start"
+         },
+         "height": {
+          "field": {
+           "group": "height"
+          }
+         }
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "layer_2_marks",
+   "type": "text",
+   "style": [
+    "text"
+   ],
+   "from": {
+    "data": "data_3"
+   },
+   "encode": {
+    "update": {
+     "align": {
+      "value": "left"
+     },
+     "dx": {
+      "value": 4
+     },
+     "fontSize": {
+      "value": 9.5
+     },
+     "fill": {
+      "value": "#565656"
+     },
+     "description": {
+      "signal": "\"promedio: \" + (format(datum[\"promedio\"], \"\")) + \"; area: \" + (isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], ' ') : datum[\"area\"] : \"\"+datum[\"area\"])"
+     },
+     "x": {
+      "scale": "x",
+      "field": "promedio"
+     },
+     "y": {
+      "scale": "y",
+      "field": "area",
+      "band": 0.5
+     },
+     "text": {
+      "signal": "format(datum[\"promedio\"], \".2f\")"
+     },
+     "baseline": {
+      "value": "middle"
+     }
+    }
+   }
+  }
+ ],
+ "scales": [
+  {
+   "name": "x",
+   "type": "linear",
+   "domain": [
+    0,
+    5
+   ],
+   "range": [
+    0,
+    {
+     "signal": "width"
+    }
+   ],
+   "nice": true,
+   "zero": true
+  },
+  {
+   "name": "y",
+   "type": "band",
+   "domain": {
+    "fields": [
+     {
+      "data": "data_1",
+      "field": "area"
+     },
+     {
+      "data": "data_0",
+      "field": "area"
+     }
+    ],
+    "sort": true
+   },
+   "range": [
+    0,
+    {
+     "signal": "height"
+    }
+   ],
+   "paddingInner": 0.1,
+   "paddingOuter": 0.05
+  },
+  {
+   "name": "color",
+   "type": "ordinal",
+   "domain": [
+    "Desacuerdo marcado",
+    "Desacuerdo",
+    "Posición intermedia",
+    "Acuerdo",
+    "Acuerdo marcado"
+   ],
+   "range": [
+    "#C00000",
+    "#ED7D31",
+    "#BFA26B",
+    "#9CC069",
+    "#2E7D32"
+   ]
+  }
+ ],
+ "axes": [
+  {
+   "scale": "x",
+   "orient": "bottom",
+   "tickCount": 6,
+   "gridScale": "y",
+   "grid": true,
+   "domain": false,
+   "labels": false,
+   "aria": false,
+   "maxExtent": 0,
+   "minExtent": 0,
+   "ticks": false,
+   "zindex": 0
+  },
+  {
+   "scale": "x",
+   "orient": "bottom",
+   "grid": false,
+   "title": "Promedio (1–5)",
+   "tickCount": 6,
+   "labelFlush": true,
+   "labelOverlap": true,
+   "zindex": 0
+  },
+  {
+   "scale": "y",
+   "orient": "left",
+   "grid": false,
+   "labelLimit": 240,
+   "zindex": 0
+  }
+ ],
+ "legends": [
+  {
+   "columns": 3,
+   "labelFontSize": 9,
+   "labelLimit": 200,
+   "orient": "bottom",
+   "fill": "color",
+   "direction": "horizontal",
+   "symbolType": "square"
+  }
+ ],
+ "config": {
+  "axis": {
+   "labelFontSize": 10,
+   "titleFontSize": 10,
+   "labelColor": "#565656",
+   "titleColor": "#565656"
+  },
+  "style": {
+   "cell": {
+    "stroke": null
+   }
+  }
+ }
+}

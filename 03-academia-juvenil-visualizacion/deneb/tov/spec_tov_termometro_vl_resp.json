@@ -1,0 +1,338 @@
+{
+ "description": "[RESPONSIVO · container] TOV Áncash · dataset = Power BI | Leyenda = tramos (5) sobre bandas de fondo.",
+ "background": "transparent",
+ "width": "container",
+ "height": "container",
+ "padding": 6,
+ "config": {
+  "font": "Segoe UI",
+  "view": {
+   "stroke": null
+  },
+  "bar": {
+   "cornerRadiusEnd": 3
+  }
+ },
+ "layer": [
+  {
+   "data": {
+    "values": [
+     {
+      "x1": 1.0,
+      "x2": 1.8,
+      "tramo": "Desacuerdo marcado",
+      "o": 1
+     },
+     {
+      "x1": 1.8,
+      "x2": 2.6,
+      "tramo": "Desacuerdo",
+      "o": 2
+     },
+     {
+      "x1": 2.6,
+      "x2": 3.4,
+      "tramo": "Posición intermedia",
+      "o": 3
+     },
+     {
+      "x1": 3.4,
+      "x2": 4.2,
+      "tramo": "Acuerdo",
+      "o": 4
+     },
+     {
+      "x1": 4.2,
+      "x2": 5.0,
+      "tramo": "Acuerdo marcado",
+      "o": 5
+     }
+    ]
+   },
+   "mark": {
+    "type": "rect",
+    "opacity": 0.12
+   },
+   "encoding": {
+    "x": {
+     "field": "x1",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       1,
+       5
+      ],
+      "nice": false
+     },
+     "axis": null
+    },
+    "x2": {
+     "field": "x2"
+    },
+    "color": {
+     "field": "tramo",
+     "type": "nominal",
+     "scale": {
+      "domain": [
+       "Desacuerdo marcado",
+       "Desacuerdo",
+       "Posición intermedia",
+       "Acuerdo",
+       "Acuerdo marcado"
+      ],
+      "range": [
+       "#C00000",
+       "#ED7D31",
+       "#BFA26B",
+       "#9CC069",
+       "#2E7D32"
+      ]
+     },
+     "legend": {
+      "title": null,
+      "orient": "bottom",
+      "columns": 5,
+      "labelFontSize": 9,
+      "labelLimit": 200
+     }
+    }
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "isValid(datum.valor)"
+    }
+   ],
+   "mark": {
+    "type": "rule",
+    "color": "#F0A868",
+    "strokeWidth": 1.4,
+    "strokeDash": [
+     5,
+     4
+    ]
+   },
+   "encoding": {
+    "x": {
+     "datum": 3.41
+    }
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "isValid(datum.valor)"
+    },
+    {
+     "aggregate": [
+      {
+       "op": "mean",
+       "field": "valor",
+       "as": "promedio"
+      },
+      {
+       "op": "valid",
+       "field": "valor",
+       "as": "n"
+      }
+     ],
+     "groupby": [
+      "bloque",
+      "orden"
+     ]
+    },
+    {
+     "calculate": "datum.promedio == 0 ? 'Sin datos' : datum.promedio <= 1.80 ? 'Desacuerdo marcado' : datum.promedio <= 2.60 ? 'Desacuerdo' : datum.promedio <= 3.40 ? 'Posición intermedia' : datum.promedio <= 4.20 ? 'Acuerdo' : 'Acuerdo marcado'",
+     "as": "descriptor"
+    },
+    {
+     "calculate": "datum.bloque == 'Barreras percibidas' ? 'Barreras percibidas (se lee al revés)' : (datum.promedio == 0 ? 'Sin datos' : datum.descriptor)",
+     "as": "color_key"
+    },
+    {
+     "calculate": "datum.promedio + 0.14",
+     "as": "xlab"
+    }
+   ],
+   "mark": {
+    "type": "bar",
+    "height": 16
+   },
+   "encoding": {
+    "y": {
+     "field": "bloque",
+     "type": "nominal",
+     "sort": {
+      "field": "orden",
+      "op": "min"
+     },
+     "axis": {
+      "title": null,
+      "labelFontSize": 11,
+      "labelLimit": 260,
+      "labelPadding": 6,
+      "domain": false,
+      "ticks": false
+     }
+    },
+    "x": {
+     "field": "promedio",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       1,
+       5
+      ],
+      "nice": false
+     },
+     "axis": {
+      "title": "Puntaje (escala 1-5)",
+      "values": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "grid": true,
+      "gridColor": "#F0F0F0",
+      "titleFontSize": 10,
+      "labelFontSize": 10
+     }
+    },
+    "color": {
+     "field": "color_key",
+     "type": "nominal",
+     "scale": {
+      "domain": [
+       "Desacuerdo marcado",
+       "Desacuerdo",
+       "Posición intermedia",
+       "Acuerdo",
+       "Acuerdo marcado",
+       "Barreras percibidas (se lee al revés)"
+      ],
+      "range": [
+       "#C00000",
+       "#ED7D31",
+       "#BFA26B",
+       "#9CC069",
+       "#2E7D32",
+       "#5B6B7B"
+      ]
+     },
+     "legend": null
+    },
+    "tooltip": [
+     {
+      "field": "bloque",
+      "type": "nominal",
+      "title": "Bloque"
+     },
+     {
+      "field": "promedio",
+      "type": "quantitative",
+      "title": "Puntaje",
+      "format": ".2f"
+     },
+     {
+      "field": "descriptor",
+      "type": "nominal",
+      "title": "Descriptor"
+     },
+     {
+      "field": "n",
+      "type": "quantitative",
+      "title": "Ítems válidos"
+     }
+    ]
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "isValid(datum.valor)"
+    },
+    {
+     "aggregate": [
+      {
+       "op": "mean",
+       "field": "valor",
+       "as": "promedio"
+      },
+      {
+       "op": "valid",
+       "field": "valor",
+       "as": "n"
+      }
+     ],
+     "groupby": [
+      "bloque",
+      "orden"
+     ]
+    },
+    {
+     "calculate": "datum.promedio == 0 ? 'Sin datos' : datum.promedio <= 1.80 ? 'Desacuerdo marcado' : datum.promedio <= 2.60 ? 'Desacuerdo' : datum.promedio <= 3.40 ? 'Posición intermedia' : datum.promedio <= 4.20 ? 'Acuerdo' : 'Acuerdo marcado'",
+     "as": "descriptor"
+    },
+    {
+     "calculate": "datum.bloque == 'Barreras percibidas' ? 'Barreras percibidas (se lee al revés)' : (datum.promedio == 0 ? 'Sin datos' : datum.descriptor)",
+     "as": "color_key"
+    },
+    {
+     "calculate": "datum.promedio + 0.14",
+     "as": "xlab"
+    },
+    {
+     "filter": "datum.promedio > 0"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "baseline": "middle",
+    "fontSize": 10,
+    "fontWeight": "bold",
+    "color": "#404040",
+    "dx": 2
+   },
+   "encoding": {
+    "y": {
+     "field": "bloque",
+     "type": "nominal",
+     "sort": {
+      "field": "orden",
+      "op": "min"
+     },
+     "axis": {
+      "title": null,
+      "labelFontSize": 11,
+      "labelLimit": 260,
+      "labelPadding": 6,
+      "domain": false,
+      "ticks": false
+     }
+    },
+    "x": {
+     "field": "xlab",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       1,
+       5
+      ]
+     }
+    },
+    "text": {
+     "field": "promedio",
+     "type": "quantitative",
+     "format": ".1f"
+    }
+   }
+  }
+ ],
+ "data": {
+  "name": "dataset"
+ }
+}

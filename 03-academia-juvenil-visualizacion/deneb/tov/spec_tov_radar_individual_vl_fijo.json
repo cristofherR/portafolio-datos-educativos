@@ -1,0 +1,1310 @@
+{
+ "description": "[TAMAÑO FIJO] TOV Áncash · dataset = Power BI",
+ "background": "transparent",
+ "width": 420,
+ "height": 420,
+ "padding": 6,
+ "config": {
+  "font": "Segoe UI",
+  "view": {
+   "stroke": null
+  }
+ },
+ "layer": [
+  {
+   "data": {
+    "values": [
+     {
+      "x": 0.0,
+      "y": -1.0,
+      "o": 0,
+      "anillo": "r1"
+     },
+     {
+      "x": 0.5,
+      "y": -0.866,
+      "o": 1,
+      "anillo": "r1"
+     },
+     {
+      "x": 0.866,
+      "y": -0.5,
+      "o": 2,
+      "anillo": "r1"
+     },
+     {
+      "x": 1.0,
+      "y": 0.0,
+      "o": 3,
+      "anillo": "r1"
+     },
+     {
+      "x": 0.866,
+      "y": 0.5,
+      "o": 4,
+      "anillo": "r1"
+     },
+     {
+      "x": 0.5,
+      "y": 0.866,
+      "o": 5,
+      "anillo": "r1"
+     },
+     {
+      "x": 0.0,
+      "y": 1.0,
+      "o": 6,
+      "anillo": "r1"
+     },
+     {
+      "x": -0.5,
+      "y": 0.866,
+      "o": 7,
+      "anillo": "r1"
+     },
+     {
+      "x": -0.866,
+      "y": 0.5,
+      "o": 8,
+      "anillo": "r1"
+     },
+     {
+      "x": -1.0,
+      "y": 0.0,
+      "o": 9,
+      "anillo": "r1"
+     },
+     {
+      "x": -0.866,
+      "y": -0.5,
+      "o": 10,
+      "anillo": "r1"
+     },
+     {
+      "x": -0.5,
+      "y": -0.866,
+      "o": 11,
+      "anillo": "r1"
+     },
+     {
+      "x": 0.0,
+      "y": -1.0,
+      "o": 12,
+      "anillo": "r1"
+     },
+     {
+      "x": 0.0,
+      "y": -2.0,
+      "o": 0,
+      "anillo": "r2"
+     },
+     {
+      "x": 1.0,
+      "y": -1.7321,
+      "o": 1,
+      "anillo": "r2"
+     },
+     {
+      "x": 1.7321,
+      "y": -1.0,
+      "o": 2,
+      "anillo": "r2"
+     },
+     {
+      "x": 2.0,
+      "y": 0.0,
+      "o": 3,
+      "anillo": "r2"
+     },
+     {
+      "x": 1.7321,
+      "y": 1.0,
+      "o": 4,
+      "anillo": "r2"
+     },
+     {
+      "x": 1.0,
+      "y": 1.7321,
+      "o": 5,
+      "anillo": "r2"
+     },
+     {
+      "x": 0.0,
+      "y": 2.0,
+      "o": 6,
+      "anillo": "r2"
+     },
+     {
+      "x": -1.0,
+      "y": 1.7321,
+      "o": 7,
+      "anillo": "r2"
+     },
+     {
+      "x": -1.7321,
+      "y": 1.0,
+      "o": 8,
+      "anillo": "r2"
+     },
+     {
+      "x": -2.0,
+      "y": 0.0,
+      "o": 9,
+      "anillo": "r2"
+     },
+     {
+      "x": -1.7321,
+      "y": -1.0,
+      "o": 10,
+      "anillo": "r2"
+     },
+     {
+      "x": -1.0,
+      "y": -1.7321,
+      "o": 11,
+      "anillo": "r2"
+     },
+     {
+      "x": 0.0,
+      "y": -2.0,
+      "o": 12,
+      "anillo": "r2"
+     },
+     {
+      "x": 0.0,
+      "y": -3.0,
+      "o": 0,
+      "anillo": "r3"
+     },
+     {
+      "x": 1.5,
+      "y": -2.5981,
+      "o": 1,
+      "anillo": "r3"
+     },
+     {
+      "x": 2.5981,
+      "y": -1.5,
+      "o": 2,
+      "anillo": "r3"
+     },
+     {
+      "x": 3.0,
+      "y": 0.0,
+      "o": 3,
+      "anillo": "r3"
+     },
+     {
+      "x": 2.5981,
+      "y": 1.5,
+      "o": 4,
+      "anillo": "r3"
+     },
+     {
+      "x": 1.5,
+      "y": 2.5981,
+      "o": 5,
+      "anillo": "r3"
+     },
+     {
+      "x": 0.0,
+      "y": 3.0,
+      "o": 6,
+      "anillo": "r3"
+     },
+     {
+      "x": -1.5,
+      "y": 2.5981,
+      "o": 7,
+      "anillo": "r3"
+     },
+     {
+      "x": -2.5981,
+      "y": 1.5,
+      "o": 8,
+      "anillo": "r3"
+     },
+     {
+      "x": -3.0,
+      "y": 0.0,
+      "o": 9,
+      "anillo": "r3"
+     },
+     {
+      "x": -2.5981,
+      "y": -1.5,
+      "o": 10,
+      "anillo": "r3"
+     },
+     {
+      "x": -1.5,
+      "y": -2.5981,
+      "o": 11,
+      "anillo": "r3"
+     },
+     {
+      "x": 0.0,
+      "y": -3.0,
+      "o": 12,
+      "anillo": "r3"
+     },
+     {
+      "x": 0.0,
+      "y": -4.0,
+      "o": 0,
+      "anillo": "r4"
+     },
+     {
+      "x": 2.0,
+      "y": -3.4641,
+      "o": 1,
+      "anillo": "r4"
+     },
+     {
+      "x": 3.4641,
+      "y": -2.0,
+      "o": 2,
+      "anillo": "r4"
+     },
+     {
+      "x": 4.0,
+      "y": 0.0,
+      "o": 3,
+      "anillo": "r4"
+     },
+     {
+      "x": 3.4641,
+      "y": 2.0,
+      "o": 4,
+      "anillo": "r4"
+     },
+     {
+      "x": 2.0,
+      "y": 3.4641,
+      "o": 5,
+      "anillo": "r4"
+     },
+     {
+      "x": 0.0,
+      "y": 4.0,
+      "o": 6,
+      "anillo": "r4"
+     },
+     {
+      "x": -2.0,
+      "y": 3.4641,
+      "o": 7,
+      "anillo": "r4"
+     },
+     {
+      "x": -3.4641,
+      "y": 2.0,
+      "o": 8,
+      "anillo": "r4"
+     },
+     {
+      "x": -4.0,
+      "y": 0.0,
+      "o": 9,
+      "anillo": "r4"
+     },
+     {
+      "x": -3.4641,
+      "y": -2.0,
+      "o": 10,
+      "anillo": "r4"
+     },
+     {
+      "x": -2.0,
+      "y": -3.4641,
+      "o": 11,
+      "anillo": "r4"
+     },
+     {
+      "x": 0.0,
+      "y": -4.0,
+      "o": 12,
+      "anillo": "r4"
+     },
+     {
+      "x": 0.0,
+      "y": -5.0,
+      "o": 0,
+      "anillo": "r5"
+     },
+     {
+      "x": 2.5,
+      "y": -4.3301,
+      "o": 1,
+      "anillo": "r5"
+     },
+     {
+      "x": 4.3301,
+      "y": -2.5,
+      "o": 2,
+      "anillo": "r5"
+     },
+     {
+      "x": 5.0,
+      "y": 0.0,
+      "o": 3,
+      "anillo": "r5"
+     },
+     {
+      "x": 4.3301,
+      "y": 2.5,
+      "o": 4,
+      "anillo": "r5"
+     },
+     {
+      "x": 2.5,
+      "y": 4.3301,
+      "o": 5,
+      "anillo": "r5"
+     },
+     {
+      "x": 0.0,
+      "y": 5.0,
+      "o": 6,
+      "anillo": "r5"
+     },
+     {
+      "x": -2.5,
+      "y": 4.3301,
+      "o": 7,
+      "anillo": "r5"
+     },
+     {
+      "x": -4.3301,
+      "y": 2.5,
+      "o": 8,
+      "anillo": "r5"
+     },
+     {
+      "x": -5.0,
+      "y": 0.0,
+      "o": 9,
+      "anillo": "r5"
+     },
+     {
+      "x": -4.3301,
+      "y": -2.5,
+      "o": 10,
+      "anillo": "r5"
+     },
+     {
+      "x": -2.5,
+      "y": -4.3301,
+      "o": 11,
+      "anillo": "r5"
+     },
+     {
+      "x": 0.0,
+      "y": -5.0,
+      "o": 12,
+      "anillo": "r5"
+     }
+    ]
+   },
+   "mark": {
+    "type": "line",
+    "color": "#E6E6E6",
+    "strokeWidth": 1
+   },
+   "encoding": {
+    "x": {
+     "field": "x",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "detail": {
+     "field": "anillo"
+    },
+    "order": {
+     "field": "o"
+    }
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "x": 0.0,
+      "y": -3.41,
+      "o": 0,
+      "anillo": "umbral"
+     },
+     {
+      "x": 1.705,
+      "y": -2.9531,
+      "o": 1,
+      "anillo": "umbral"
+     },
+     {
+      "x": 2.9531,
+      "y": -1.705,
+      "o": 2,
+      "anillo": "umbral"
+     },
+     {
+      "x": 3.41,
+      "y": 0.0,
+      "o": 3,
+      "anillo": "umbral"
+     },
+     {
+      "x": 2.9531,
+      "y": 1.705,
+      "o": 4,
+      "anillo": "umbral"
+     },
+     {
+      "x": 1.705,
+      "y": 2.9531,
+      "o": 5,
+      "anillo": "umbral"
+     },
+     {
+      "x": 0.0,
+      "y": 3.41,
+      "o": 6,
+      "anillo": "umbral"
+     },
+     {
+      "x": -1.705,
+      "y": 2.9531,
+      "o": 7,
+      "anillo": "umbral"
+     },
+     {
+      "x": -2.9531,
+      "y": 1.705,
+      "o": 8,
+      "anillo": "umbral"
+     },
+     {
+      "x": -3.41,
+      "y": 0.0,
+      "o": 9,
+      "anillo": "umbral"
+     },
+     {
+      "x": -2.9531,
+      "y": -1.705,
+      "o": 10,
+      "anillo": "umbral"
+     },
+     {
+      "x": -1.705,
+      "y": -2.9531,
+      "o": 11,
+      "anillo": "umbral"
+     },
+     {
+      "x": 0.0,
+      "y": -3.41,
+      "o": 12,
+      "anillo": "umbral"
+     }
+    ]
+   },
+   "mark": {
+    "type": "line",
+    "color": "#F0A868",
+    "strokeWidth": 1.4,
+    "strokeDash": [
+     5,
+     4
+    ]
+   },
+   "encoding": {
+    "x": {
+     "field": "x",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "order": {
+     "field": "o"
+    }
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "x": 0,
+      "y": 0,
+      "x2": 0.0,
+      "y2": -5.5
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": 2.75,
+      "y2": -4.7631
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": 4.7631,
+      "y2": -2.75
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": 5.5,
+      "y2": 0.0
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": 4.7631,
+      "y2": 2.75
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": 2.75,
+      "y2": 4.7631
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": 0.0,
+      "y2": 5.5
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": -2.75,
+      "y2": 4.7631
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": -4.7631,
+      "y2": 2.75
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": -5.5,
+      "y2": 0.0
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": -4.7631,
+      "y2": -2.75
+     },
+     {
+      "x": 0,
+      "y": 0,
+      "x2": -2.75,
+      "y2": -4.7631
+     }
+    ]
+   },
+   "mark": {
+    "type": "rule",
+    "color": "#EDEDED"
+   },
+   "encoding": {
+    "x": {
+     "field": "x",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "x2": {
+     "field": "x2"
+    },
+    "y2": {
+     "field": "y2"
+    }
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "x": 0.0,
+      "y": -6.25,
+      "txt": "Ciencias"
+     },
+     {
+      "x": 3.125,
+      "y": -5.4127,
+      "txt": "Numérica"
+     },
+     {
+      "x": 5.4127,
+      "y": -3.125,
+      "txt": "Ingeniería"
+     },
+     {
+      "x": 6.25,
+      "y": 0.0,
+      "txt": "Artística"
+     },
+     {
+      "x": 5.4127,
+      "y": 3.125,
+      "txt": "Social"
+     },
+     {
+      "x": 3.125,
+      "y": 5.4127,
+      "txt": "Emprendedora"
+     },
+     {
+      "x": 0.0,
+      "y": 6.25,
+      "txt": "Salud"
+     },
+     {
+      "x": -3.125,
+      "y": 5.4127,
+      "txt": "Gastronomía"
+     },
+     {
+      "x": -5.4127,
+      "y": 3.125,
+      "txt": "Estética"
+     },
+     {
+      "x": -6.25,
+      "y": 0.0,
+      "txt": "Deportiva"
+     },
+     {
+      "x": -5.4127,
+      "y": -3.125,
+      "txt": "Seguridad y\ndefensa"
+     },
+     {
+      "x": -3.125,
+      "y": -5.4127,
+      "txt": "Aeronáutica y\nvuelo"
+     }
+    ]
+   },
+   "mark": {
+    "type": "text",
+    "fontSize": 10,
+    "color": "#565656",
+    "align": "center",
+    "baseline": "middle"
+   },
+   "encoding": {
+    "x": {
+     "field": "x",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "text": {
+     "field": "txt"
+    }
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "isValid(datum.valor)"
+    },
+    {
+     "aggregate": [
+      {
+       "op": "mean",
+       "field": "valor",
+       "as": "promedio"
+      },
+      {
+       "op": "valid",
+       "field": "valor",
+       "as": "n"
+      }
+     ],
+     "groupby": [
+      "area",
+      "orden"
+     ]
+    },
+    {
+     "impute": "promedio",
+     "key": "orden",
+     "keyvals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "value": 0
+    },
+    {
+     "impute": "n",
+     "key": "orden",
+     "keyvals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "value": 0
+    },
+    {
+     "calculate": "-PI/2 + 2*PI*(datum.orden-1)/12",
+     "as": "ang"
+    },
+    {
+     "calculate": "datum.promedio * cos(datum.ang)",
+     "as": "x"
+    },
+    {
+     "calculate": "datum.promedio * sin(datum.ang)",
+     "as": "y"
+    },
+    {
+     "calculate": "datum.promedio == 0 ? 'Sin datos' : datum.promedio <= 1.80 ? 'Desacuerdo marcado' : datum.promedio <= 2.60 ? 'Desacuerdo' : datum.promedio <= 3.40 ? 'Posición intermedia' : datum.promedio <= 4.20 ? 'Acuerdo' : 'Acuerdo marcado'",
+     "as": "descriptor"
+    }
+   ],
+   "mark": {
+    "type": "line",
+    "color": "#1F4E79",
+    "strokeWidth": 2.8,
+    "opacity": 0.95,
+    "interpolate": "linear",
+    "strokeJoin": "round"
+   },
+   "encoding": {
+    "x": {
+     "field": "x",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "order": {
+     "field": "ang"
+    }
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "isValid(datum.valor)"
+    },
+    {
+     "aggregate": [
+      {
+       "op": "mean",
+       "field": "valor",
+       "as": "promedio"
+      },
+      {
+       "op": "valid",
+       "field": "valor",
+       "as": "n"
+      }
+     ],
+     "groupby": [
+      "area",
+      "orden"
+     ]
+    },
+    {
+     "impute": "promedio",
+     "key": "orden",
+     "keyvals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "value": 0
+    },
+    {
+     "impute": "n",
+     "key": "orden",
+     "keyvals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "value": 0
+    },
+    {
+     "calculate": "-PI/2 + 2*PI*(datum.orden-1)/12",
+     "as": "ang"
+    },
+    {
+     "calculate": "datum.promedio * cos(datum.ang)",
+     "as": "x"
+    },
+    {
+     "calculate": "datum.promedio * sin(datum.ang)",
+     "as": "y"
+    },
+    {
+     "calculate": "datum.promedio == 0 ? 'Sin datos' : datum.promedio <= 1.80 ? 'Desacuerdo marcado' : datum.promedio <= 2.60 ? 'Desacuerdo' : datum.promedio <= 3.40 ? 'Posición intermedia' : datum.promedio <= 4.20 ? 'Acuerdo' : 'Acuerdo marcado'",
+     "as": "descriptor"
+    },
+    {
+     "filter": "datum.orden == 1 || datum.orden == 12"
+    }
+   ],
+   "mark": {
+    "type": "line",
+    "color": "#1F4E79",
+    "strokeWidth": 2.8,
+    "opacity": 0.95
+   },
+   "encoding": {
+    "x": {
+     "field": "x",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "order": {
+     "field": "ang"
+    }
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "isValid(datum.valor)"
+    },
+    {
+     "aggregate": [
+      {
+       "op": "mean",
+       "field": "valor",
+       "as": "promedio"
+      },
+      {
+       "op": "valid",
+       "field": "valor",
+       "as": "n"
+      }
+     ],
+     "groupby": [
+      "area",
+      "orden"
+     ]
+    },
+    {
+     "impute": "promedio",
+     "key": "orden",
+     "keyvals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "value": 0
+    },
+    {
+     "impute": "n",
+     "key": "orden",
+     "keyvals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "value": 0
+    },
+    {
+     "calculate": "-PI/2 + 2*PI*(datum.orden-1)/12",
+     "as": "ang"
+    },
+    {
+     "calculate": "datum.promedio * cos(datum.ang)",
+     "as": "x"
+    },
+    {
+     "calculate": "datum.promedio * sin(datum.ang)",
+     "as": "y"
+    },
+    {
+     "calculate": "datum.promedio == 0 ? 'Sin datos' : datum.promedio <= 1.80 ? 'Desacuerdo marcado' : datum.promedio <= 2.60 ? 'Desacuerdo' : datum.promedio <= 3.40 ? 'Posición intermedia' : datum.promedio <= 4.20 ? 'Acuerdo' : 'Acuerdo marcado'",
+     "as": "descriptor"
+    },
+    {
+     "filter": "datum.promedio > 0"
+    }
+   ],
+   "mark": {
+    "type": "circle",
+    "size": 80,
+    "filled": true,
+    "stroke": "white",
+    "strokeWidth": 1.2
+   },
+   "encoding": {
+    "x": {
+     "field": "x",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "color": {
+     "field": "descriptor",
+     "type": "nominal",
+     "scale": {
+      "domain": [
+       "Desacuerdo marcado",
+       "Desacuerdo",
+       "Posición intermedia",
+       "Acuerdo",
+       "Acuerdo marcado",
+       "Sin datos"
+      ],
+      "range": [
+       "#C00000",
+       "#ED7D31",
+       "#BFA26B",
+       "#9CC069",
+       "#2E7D32",
+       "#D9D9D9"
+      ]
+     },
+     "legend": {
+      "title": null,
+      "orient": "bottom",
+      "columns": 3,
+      "labelFontSize": 9,
+      "labelLimit": 200
+     }
+    },
+    "tooltip": [
+     {
+      "field": "area",
+      "type": "nominal",
+      "title": "Área"
+     },
+     {
+      "field": "promedio",
+      "type": "quantitative",
+      "title": "Puntaje",
+      "format": ".2f"
+     },
+     {
+      "field": "descriptor",
+      "type": "nominal",
+      "title": "Descriptor"
+     },
+     {
+      "field": "n",
+      "type": "quantitative",
+      "title": "Ítems válidos"
+     }
+    ]
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "isValid(datum.valor)"
+    },
+    {
+     "aggregate": [
+      {
+       "op": "mean",
+       "field": "valor",
+       "as": "promedio"
+      },
+      {
+       "op": "valid",
+       "field": "valor",
+       "as": "n"
+      }
+     ],
+     "groupby": [
+      "area",
+      "orden"
+     ]
+    },
+    {
+     "impute": "promedio",
+     "key": "orden",
+     "keyvals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "value": 0
+    },
+    {
+     "impute": "n",
+     "key": "orden",
+     "keyvals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "value": 0
+    },
+    {
+     "calculate": "-PI/2 + 2*PI*(datum.orden-1)/12",
+     "as": "ang"
+    },
+    {
+     "calculate": "datum.promedio * cos(datum.ang)",
+     "as": "x"
+    },
+    {
+     "calculate": "datum.promedio * sin(datum.ang)",
+     "as": "y"
+    },
+    {
+     "calculate": "datum.promedio == 0 ? 'Sin datos' : datum.promedio <= 1.80 ? 'Desacuerdo marcado' : datum.promedio <= 2.60 ? 'Desacuerdo' : datum.promedio <= 3.40 ? 'Posición intermedia' : datum.promedio <= 4.20 ? 'Acuerdo' : 'Acuerdo marcado'",
+     "as": "descriptor"
+    },
+    {
+     "filter": "datum.promedio > 0"
+    },
+    {
+     "window": [
+      {
+       "op": "rank",
+       "as": "rk"
+      }
+     ],
+     "sort": [
+      {
+       "field": "promedio",
+       "order": "descending"
+      },
+      {
+       "field": "orden",
+       "order": "ascending"
+      }
+     ]
+    },
+    {
+     "filter": "datum.rk <= 3"
+    }
+   ],
+   "mark": {
+    "type": "circle",
+    "size": 260,
+    "filled": false,
+    "stroke": "#C00000",
+    "strokeWidth": 1.8,
+    "opacity": 0.85
+   },
+   "encoding": {
+    "x": {
+     "field": "x",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    },
+    "y": {
+     "field": "y",
+     "type": "quantitative",
+     "scale": {
+      "domain": [
+       -6.8,
+       6.8
+      ]
+     },
+     "axis": null
+    }
+   }
+  }
+ ],
+ "data": {
+  "name": "dataset"
+ }
+}

@@ -105,13 +105,16 @@ cálculo o un identificador personal. Si dice **Limpio**, se puede publicar.
   python/hse_aj_sankey.py      Sankey de cambio entre cortes
   python/aj_radar_habilidades.py
   sankey/ | radar/             specs para Power BI + Deneb
-  data/synthetic/              agregados de ejemplo
+  deneb/                       visuales Deneb (Sankey v13, TOV, tarjeta de guion)
+    sankey_hse_v13_kpis/  tov/  guion/  python/
+  data/synthetic/              agregados de ejemplo (incluye deneb)
 04-stakeholders/             mapa de actores (en preparación)
 tools/                       utilidades (datos sintéticos, verificación)
 ```
 
 ## Privacidad
 
-- Los ejemplos son **sintéticos** y se generan con `tools/make_synthetic_examples.py`.
+- Los ejemplos son **sintéticos** y se generan con `tools/make_synthetic_examples.py` y
+  `tools/make_synthetic_deneb_demo.py` (filas de ejemplo para las specs Deneb de `deneb/`).
 - Ninguna credencial se versiona: todo se lee de variables de entorno (ver `.env.example`).
 - Los datos de niñas, niños y familias nunca salen del entorno institucional.

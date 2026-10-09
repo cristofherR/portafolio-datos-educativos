@@ -1,0 +1,601 @@
+{
+ "$schema": "https://vega.github.io/schema/vega/v6.json",
+ "description": "[RESPONSIVO · container] TOV Áncash · dataset = Power BI | Leyenda = tramos (5), barras en color de tramo, fondo con bandas de tramo. Barreras percibidas: gris, nota al pie.",
+ "autosize": {
+  "type": "fit",
+  "contains": "padding"
+ },
+ "background": "transparent",
+ "padding": 6,
+ "style": "cell",
+ "data": [
+  {
+   "name": "dataset"
+  },
+  {
+   "name": "data_0",
+   "source": "dataset",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum.valor)"
+    }
+   ]
+  },
+  {
+   "name": "data_1",
+   "source": "data_0",
+   "transform": [
+    {
+     "type": "aggregate",
+     "groupby": [
+      "bloque",
+      "orden"
+     ],
+     "ops": [
+      "mean",
+      "valid"
+     ],
+     "fields": [
+      "valor",
+      "valor"
+     ],
+     "as": [
+      "promedio",
+      "n"
+     ]
+    },
+    {
+     "type": "formula",
+     "expr": "datum.promedio == 0 ? 'Sin datos' : datum.promedio <= 1.80 ? 'Desacuerdo marcado' : datum.promedio <= 2.60 ? 'Desacuerdo' : datum.promedio <= 3.40 ? 'Posición intermedia' : datum.promedio <= 4.20 ? 'Acuerdo' : 'Acuerdo marcado'",
+     "as": "descriptor"
+    },
+    {
+     "type": "formula",
+     "expr": "datum.bloque == 'Barreras percibidas' ? 'Barreras percibidas (se lee al revés)' : (datum.promedio == 0 ? 'Sin datos' : datum.descriptor)",
+     "as": "color_key"
+    },
+    {
+     "type": "formula",
+     "expr": "datum.promedio + 0.14",
+     "as": "xlab"
+    }
+   ]
+  },
+  {
+   "name": "data_2",
+   "source": "data_1",
+   "transform": [
+    {
+     "type": "formula",
+     "expr": "indexof([\"Desacuerdo marcado\",\"Desacuerdo\",\"Posición intermedia\",\"Acuerdo\",\"Acuerdo marcado\",\"Barreras percibidas (se lee al revés)\"], datum['color_key'])",
+     "as": "_color_key_sort_index"
+    }
+   ]
+  },
+  {
+   "name": "data_3",
+   "source": "data_2",
+   "transform": [
+    {
+     "type": "stack",
+     "groupby": [
+      "bloque"
+     ],
+     "field": "promedio",
+     "sort": {
+      "field": [
+       "_color_key_sort_index"
+      ],
+      "order": [
+       "ascending"
+      ]
+     },
+     "as": [
+      "promedio_start",
+      "promedio_end"
+     ],
+     "offset": "zero"
+    },
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"promedio\"]) && isFinite(+datum[\"promedio\"])"
+    }
+   ]
+  },
+  {
+   "name": "data_4",
+   "source": "data_1",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.promedio > 0"
+    }
+   ]
+  },
+  {
+   "name": "data_5",
+   "source": "data_4",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"xlab\"]) && isFinite(+datum[\"xlab\"])"
+    }
+   ]
+  },
+  {
+   "name": "tramos",
+   "values": [
+    {
+     "x1": 1.0,
+     "x2": 1.8,
+     "tramo": "Desacuerdo marcado",
+     "o": 1
+    },
+    {
+     "x1": 1.8,
+     "x2": 2.6,
+     "tramo": "Desacuerdo",
+     "o": 2
+    },
+    {
+     "x1": 2.6,
+     "x2": 3.4,
+     "tramo": "Posición intermedia",
+     "o": 3
+    },
+    {
+     "x1": 3.4,
+     "x2": 4.2,
+     "tramo": "Acuerdo",
+     "o": 4
+    },
+    {
+     "x1": 4.2,
+     "x2": 5.0,
+     "tramo": "Acuerdo marcado",
+     "o": 5
+    }
+   ]
+  }
+ ],
+ "signals": [
+  {
+   "name": "width",
+   "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+   "on": [
+    {
+     "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+     "events": "window:resize"
+    }
+   ]
+  },
+  {
+   "name": "height",
+   "init": "isFinite(containerSize()[1]) ? containerSize()[1] : 300",
+   "on": [
+    {
+     "update": "isFinite(containerSize()[1]) ? containerSize()[1] : 300",
+     "events": "window:resize"
+    }
+   ]
+  }
+ ],
+ "marks": [
+  {
+   "name": "bandas",
+   "type": "rect",
+   "interactive": false,
+   "from": {
+    "data": "tramos"
+   },
+   "encode": {
+    "update": {
+     "x": {
+      "scale": "x",
+      "field": "x1"
+     },
+     "x2": {
+      "scale": "x",
+      "field": "x2"
+     },
+     "y": {
+      "value": 0
+     },
+     "y2": {
+      "signal": "height"
+     },
+     "fill": {
+      "scale": "tramo",
+      "field": "tramo"
+     },
+     "fillOpacity": {
+      "value": 0.12
+     },
+     "tooltip": {
+      "value": null
+     }
+    }
+   }
+  },
+  {
+   "name": "layer_0_marks",
+   "type": "rule",
+   "style": [
+    "rule"
+   ],
+   "from": {
+    "data": "data_0"
+   },
+   "encode": {
+    "update": {
+     "strokeWidth": {
+      "value": 1.4
+     },
+     "strokeDash": {
+      "value": [
+       5,
+       4
+      ]
+     },
+     "stroke": {
+      "value": "#F0A868"
+     },
+     "x": {
+      "scale": "x",
+      "value": 3.41
+     },
+     "y": {
+      "value": 0
+     },
+     "y2": {
+      "field": {
+       "group": "height"
+      }
+     }
+    }
+   }
+  },
+  {
+   "type": "group",
+   "from": {
+    "facet": {
+     "data": "data_3",
+     "name": "stack_group_layer_1_main",
+     "groupby": [
+      "bloque"
+     ],
+     "aggregate": {
+      "fields": [
+       "promedio_start",
+       "promedio_start",
+       "promedio_end",
+       "promedio_end"
+      ],
+      "ops": [
+       "min",
+       "max",
+       "min",
+       "max"
+      ]
+     }
+    }
+   },
+   "encode": {
+    "update": {
+     "yc": {
+      "scale": "y",
+      "field": "bloque",
+      "band": 0.5
+     },
+     "height": {
+      "value": 16
+     },
+     "cornerRadiusTopRight": {
+      "value": 3
+     },
+     "cornerRadiusBottomRight": {
+      "value": 3
+     },
+     "x": {
+      "signal": "min(scale('x',datum[\"min_promedio_start\"]),scale('x',datum[\"max_promedio_start\"]),scale('x',datum[\"min_promedio_end\"]),scale('x',datum[\"max_promedio_end\"]))"
+     },
+     "x2": {
+      "signal": "max(scale('x',datum[\"min_promedio_start\"]),scale('x',datum[\"max_promedio_start\"]),scale('x',datum[\"min_promedio_end\"]),scale('x',datum[\"max_promedio_end\"]))"
+     },
+     "clip": {
+      "value": true
+     }
+    }
+   },
+   "marks": [
+    {
+     "type": "group",
+     "encode": {
+      "update": {
+       "x": {
+        "field": {
+         "group": "x"
+        },
+        "mult": -1
+       },
+       "height": {
+        "field": {
+         "group": "height"
+        }
+       }
+      }
+     },
+     "marks": [
+      {
+       "name": "layer_1_marks",
+       "type": "rect",
+       "style": [
+        "bar"
+       ],
+       "from": {
+        "data": "stack_group_layer_1_main"
+       },
+       "encode": {
+        "update": {
+         "fill": {
+          "scale": "color",
+          "field": "color_key"
+         },
+         "tooltip": {
+          "signal": "{\"Bloque\": isValid(datum[\"bloque\"]) ? isArray(datum[\"bloque\"]) ? join(datum[\"bloque\"], '\\n') : datum[\"bloque\"] : \"\"+datum[\"bloque\"], \"Puntaje\": format(datum[\"promedio\"], \".2f\"), \"Descriptor\": isValid(datum[\"descriptor\"]) ? isArray(datum[\"descriptor\"]) ? join(datum[\"descriptor\"], '\\n') : datum[\"descriptor\"] : \"\"+datum[\"descriptor\"], \"Ítems válidos\": format(datum[\"n\"], \"\")}"
+         },
+         "ariaRoleDescription": {
+          "value": "bar"
+         },
+         "description": {
+          "signal": "\"promedio: \" + (format(datum[\"promedio\"], \"\")) + \"; bloque: \" + (isValid(datum[\"bloque\"]) ? isArray(datum[\"bloque\"]) ? join(datum[\"bloque\"], ' ') : datum[\"bloque\"] : \"\"+datum[\"bloque\"]) + \"; color_key: \" + (isValid(datum[\"color_key\"]) ? isArray(datum[\"color_key\"]) ? join(datum[\"color_key\"], ' ') : datum[\"color_key\"] : \"\"+datum[\"color_key\"]) + \"; Bloque: \" + (isValid(datum[\"bloque\"]) ? isArray(datum[\"bloque\"]) ? join(datum[\"bloque\"], ' ') : datum[\"bloque\"] : \"\"+datum[\"bloque\"]) + \"; Puntaje: \" + (format(datum[\"promedio\"], \".2f\")) + \"; Descriptor: \" + (isValid(datum[\"descriptor\"]) ? isArray(datum[\"descriptor\"]) ? join(datum[\"descriptor\"], ' ') : datum[\"descriptor\"] : \"\"+datum[\"descriptor\"]) + \"; Ítems válidos: \" + (format(datum[\"n\"], \"\"))"
+         },
+         "x": {
+          "scale": "x",
+          "field": "promedio_end"
+         },
+         "x2": {
+          "scale": "x",
+          "field": "promedio_start"
+         },
+         "height": {
+          "field": {
+           "group": "height"
+          }
+         }
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "layer_2_marks",
+   "type": "text",
+   "style": [
+    "text"
+   ],
+   "from": {
+    "data": "data_5"
+   },
+   "encode": {
+    "update": {
+     "align": {
+      "value": "left"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "dx": {
+      "value": 2
+     },
+     "fontSize": {
+      "value": 10
+     },
+     "fontWeight": {
+      "value": "bold"
+     },
+     "fill": {
+      "value": "#404040"
+     },
+     "description": {
+      "signal": "\"xlab: \" + (format(datum[\"xlab\"], \"\")) + \"; bloque: \" + (isValid(datum[\"bloque\"]) ? isArray(datum[\"bloque\"]) ? join(datum[\"bloque\"], ' ') : datum[\"bloque\"] : \"\"+datum[\"bloque\"]) + \"; promedio: \" + (format(datum[\"promedio\"], \".1f\"))"
+     },
+     "x": {
+      "scale": "x",
+      "field": "xlab"
+     },
+     "y": {
+      "scale": "y",
+      "field": "bloque",
+      "band": 0.5
+     },
+     "text": {
+      "signal": "format(datum[\"promedio\"], \".1f\")"
+     }
+    }
+   }
+  }
+ ],
+ "scales": [
+  {
+   "name": "x",
+   "type": "linear",
+   "domain": [
+    1,
+    5
+   ],
+   "range": [
+    0,
+    {
+     "signal": "width"
+    }
+   ],
+   "nice": false,
+   "zero": true
+  },
+  {
+   "name": "y",
+   "type": "band",
+   "domain": {
+    "fields": [
+     {
+      "data": "data_2",
+      "field": "bloque"
+     },
+     {
+      "data": "data_4",
+      "field": "bloque"
+     }
+    ],
+    "sort": {
+     "op": "min",
+     "field": "orden"
+    }
+   },
+   "range": [
+    0,
+    {
+     "signal": "height"
+    }
+   ],
+   "paddingInner": 0.1,
+   "paddingOuter": 0.05
+  },
+  {
+   "name": "color",
+   "type": "ordinal",
+   "domain": [
+    "Desacuerdo marcado",
+    "Desacuerdo",
+    "Posición intermedia",
+    "Acuerdo",
+    "Acuerdo marcado",
+    "Barreras percibidas (se lee al revés)"
+   ],
+   "range": [
+    "#C00000",
+    "#ED7D31",
+    "#BFA26B",
+    "#9CC069",
+    "#2E7D32",
+    "#5B6B7B"
+   ]
+  },
+  {
+   "name": "tramo",
+   "type": "ordinal",
+   "domain": [
+    "Desacuerdo marcado",
+    "Desacuerdo",
+    "Posición intermedia",
+    "Acuerdo",
+    "Acuerdo marcado"
+   ],
+   "range": [
+    "#C00000",
+    "#ED7D31",
+    "#BFA26B",
+    "#9CC069",
+    "#2E7D32"
+   ]
+  }
+ ],
+ "axes": [
+  {
+   "scale": "x",
+   "orient": "bottom",
+   "grid": true,
+   "gridColor": "#F0F0F0",
+   "values": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "gridScale": "y",
+   "tickCount": {
+    "signal": "ceil(width/40)"
+   },
+   "domain": false,
+   "labels": false,
+   "aria": false,
+   "maxExtent": 0,
+   "minExtent": 0,
+   "ticks": false,
+   "zindex": 0
+  },
+  {
+   "scale": "x",
+   "orient": "bottom",
+   "grid": false,
+   "title": "Puntaje (escala 1-5)",
+   "labelFontSize": 10,
+   "titleFontSize": 10,
+   "values": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "labelFlush": true,
+   "labelOverlap": true,
+   "tickCount": {
+    "signal": "ceil(width/40)"
+   },
+   "zindex": 0
+  },
+  {
+   "scale": "y",
+   "orient": "left",
+   "grid": false,
+   "domain": false,
+   "labelFontSize": 11,
+   "labelLimit": 260,
+   "labelPadding": 6,
+   "ticks": false,
+   "zindex": 0
+  }
+ ],
+ "legends": [
+  {
+   "columns": 5,
+   "labelFontSize": 9,
+   "labelLimit": 200,
+   "orient": "bottom",
+   "fill": "tramo",
+   "direction": "horizontal",
+   "symbolType": "square",
+   "title": null
+  }
+ ],
+ "config": {
+  "style": {
+   "guide-label": {
+    "font": "Segoe UI"
+   },
+   "guide-title": {
+    "font": "Segoe UI"
+   },
+   "group-title": {
+    "font": "Segoe UI"
+   },
+   "group-subtitle": {
+    "font": "Segoe UI"
+   },
+   "cell": {
+    "stroke": null
+   },
+   "bar": {
+    "cornerRadiusEnd": 3
+   },
+   "text": {
+    "font": "Segoe UI"
+   }
+  }
+ }
+}

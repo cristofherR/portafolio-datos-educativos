@@ -1,0 +1,377 @@
+{
+ "$schema": "https://vega.github.io/schema/vega/v6.json",
+ "description": "[RESPONSIVO · container] TOV Áncash · dataset = Power BI",
+ "autosize": {
+  "type": "fit",
+  "contains": "padding"
+ },
+ "background": "transparent",
+ "padding": 6,
+ "style": "cell",
+ "data": [
+  {
+   "name": "dataset"
+  },
+  {
+   "name": "data_0",
+   "source": "dataset",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum.tramo)"
+    },
+    {
+     "type": "formula",
+     "expr": "indexof(['Desacuerdo marcado','Desacuerdo','Posición intermedia','Acuerdo','Acuerdo marcado'], datum.tramo)",
+     "as": "_ord"
+    },
+    {
+     "type": "joinaggregate",
+     "as": [
+      "area_mean"
+     ],
+     "ops": [
+      "mean"
+     ],
+     "fields": [
+      "valor"
+     ],
+     "groupby": [
+      "area"
+     ]
+    },
+    {
+     "type": "aggregate",
+     "groupby": [
+      "area",
+      "tramo"
+     ],
+     "ops": [
+      "count",
+      "max",
+      "max"
+     ],
+     "fields": [
+      null,
+      "area_mean",
+      "_ord"
+     ],
+     "as": [
+      "n",
+      "area_mean",
+      "_ord"
+     ]
+    },
+    {
+     "type": "stack",
+     "groupby": [
+      "area"
+     ],
+     "field": "n",
+     "sort": {
+      "field": [
+       "_ord"
+      ],
+      "order": [
+       "ascending"
+      ]
+     },
+     "as": [
+      "y0",
+      "y1"
+     ],
+     "offset": "normalize"
+    },
+    {
+     "type": "formula",
+     "expr": "(datum.y0+datum.y1)/2",
+     "as": "yc"
+    },
+    {
+     "type": "formula",
+     "expr": "format(datum.y1-datum.y0,'.0%')",
+     "as": "pct"
+    }
+   ]
+  },
+  {
+   "name": "data_1",
+   "source": "data_0",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"y0\"]) && isFinite(+datum[\"y0\"])"
+    }
+   ]
+  },
+  {
+   "name": "data_2",
+   "source": "data_0",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.y1 - datum.y0 >= 0.06"
+    }
+   ]
+  },
+  {
+   "name": "data_3",
+   "source": "data_2",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"yc\"]) && isFinite(+datum[\"yc\"])"
+    }
+   ]
+  }
+ ],
+ "signals": [
+  {
+   "name": "width",
+   "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+   "on": [
+    {
+     "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+     "events": "window:resize"
+    }
+   ]
+  },
+  {
+   "name": "height",
+   "init": "isFinite(containerSize()[1]) ? containerSize()[1] : 300",
+   "on": [
+    {
+     "update": "isFinite(containerSize()[1]) ? containerSize()[1] : 300",
+     "events": "window:resize"
+    }
+   ]
+  }
+ ],
+ "marks": [
+  {
+   "name": "layer_0_marks",
+   "type": "rect",
+   "style": [
+    "bar"
+   ],
+   "from": {
+    "data": "data_1"
+   },
+   "encode": {
+    "update": {
+     "fill": {
+      "scale": "color",
+      "field": "tramo"
+     },
+     "tooltip": {
+      "signal": "{\"Área\": isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], '\\n') : datum[\"area\"] : \"\"+datum[\"area\"], \"Descriptor\": isValid(datum[\"tramo\"]) ? isArray(datum[\"tramo\"]) ? join(datum[\"tramo\"], '\\n') : datum[\"tramo\"] : \"\"+datum[\"tramo\"], \"Estudiantes\": format(datum[\"n\"], \"\")}"
+     },
+     "ariaRoleDescription": {
+      "value": "bar"
+     },
+     "description": {
+      "signal": "\"y0: \" + (format(datum[\"y0\"], \".0%\")) + \"; area: \" + (isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], ' ') : datum[\"area\"] : \"\"+datum[\"area\"]) + \"; y1: \" + (format(datum[\"y1\"], \"\")) + \"; tramo: \" + (isValid(datum[\"tramo\"]) ? isArray(datum[\"tramo\"]) ? join(datum[\"tramo\"], ' ') : datum[\"tramo\"] : \"\"+datum[\"tramo\"]) + \"; Área: \" + (isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], ' ') : datum[\"area\"] : \"\"+datum[\"area\"]) + \"; Descriptor: \" + (isValid(datum[\"tramo\"]) ? isArray(datum[\"tramo\"]) ? join(datum[\"tramo\"], ' ') : datum[\"tramo\"] : \"\"+datum[\"tramo\"]) + \"; Estudiantes: \" + (format(datum[\"n\"], \"\"))"
+     },
+     "x": {
+      "scale": "x",
+      "field": "y0"
+     },
+     "x2": {
+      "scale": "x",
+      "field": "y1"
+     },
+     "y": {
+      "scale": "y",
+      "field": "area"
+     },
+     "height": {
+      "signal": "max(0.25, bandwidth('y'))"
+     }
+    }
+   }
+  },
+  {
+   "name": "layer_1_marks",
+   "type": "text",
+   "style": [
+    "text"
+   ],
+   "from": {
+    "data": "data_3"
+   },
+   "encode": {
+    "update": {
+     "fontSize": {
+      "value": 9
+     },
+     "fontWeight": {
+      "value": "bold"
+     },
+     "fill": {
+      "value": "#FFFFFF"
+     },
+     "description": {
+      "signal": "\"yc: \" + (format(datum[\"yc\"], \"\")) + \"; area: \" + (isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], ' ') : datum[\"area\"] : \"\"+datum[\"area\"]) + \"; pct: \" + (isValid(datum[\"pct\"]) ? isArray(datum[\"pct\"]) ? join(datum[\"pct\"], ' ') : datum[\"pct\"] : \"\"+datum[\"pct\"])"
+     },
+     "x": {
+      "scale": "x",
+      "field": "yc"
+     },
+     "y": {
+      "scale": "y",
+      "field": "area",
+      "band": 0.5
+     },
+     "text": {
+      "signal": "isValid(datum[\"pct\"]) ? datum[\"pct\"] : \"\"+datum[\"pct\"]"
+     },
+     "align": {
+      "value": "center"
+     },
+     "baseline": {
+      "value": "middle"
+     }
+    }
+   }
+  }
+ ],
+ "scales": [
+  {
+   "name": "x",
+   "type": "linear",
+   "domain": {
+    "fields": [
+     {
+      "data": "data_1",
+      "field": "y0"
+     },
+     {
+      "data": "data_1",
+      "field": "y1"
+     },
+     {
+      "data": "data_3",
+      "field": "yc"
+     }
+    ]
+   },
+   "range": [
+    0,
+    {
+     "signal": "width"
+    }
+   ],
+   "nice": true,
+   "zero": true
+  },
+  {
+   "name": "y",
+   "type": "band",
+   "domain": {
+    "fields": [
+     {
+      "data": "data_0",
+      "field": "area"
+     },
+     {
+      "data": "data_2",
+      "field": "area"
+     }
+    ],
+    "sort": {
+     "op": "max",
+     "field": "area_mean",
+     "order": "descending"
+    }
+   },
+   "range": [
+    0,
+    {
+     "signal": "height"
+    }
+   ],
+   "paddingInner": 0.1,
+   "paddingOuter": 0.05
+  },
+  {
+   "name": "color",
+   "type": "ordinal",
+   "domain": [
+    "Desacuerdo marcado",
+    "Desacuerdo",
+    "Posición intermedia",
+    "Acuerdo",
+    "Acuerdo marcado"
+   ],
+   "range": [
+    "#C00000",
+    "#ED7D31",
+    "#BFA26B",
+    "#9CC069",
+    "#2E7D32"
+   ]
+  }
+ ],
+ "axes": [
+  {
+   "scale": "x",
+   "orient": "bottom",
+   "gridScale": "y",
+   "grid": true,
+   "tickCount": {
+    "signal": "ceil(width/40)"
+   },
+   "domain": false,
+   "labels": false,
+   "aria": false,
+   "maxExtent": 0,
+   "minExtent": 0,
+   "ticks": false,
+   "zindex": 0
+  },
+  {
+   "scale": "x",
+   "orient": "bottom",
+   "grid": false,
+   "title": "% de estudiantes",
+   "format": ".0%",
+   "labelFlush": true,
+   "labelOverlap": true,
+   "tickCount": {
+    "signal": "ceil(width/40)"
+   },
+   "zindex": 0
+  },
+  {
+   "scale": "y",
+   "orient": "left",
+   "grid": false,
+   "labelLimit": 240,
+   "zindex": 0
+  }
+ ],
+ "legends": [
+  {
+   "columns": 3,
+   "labelFontSize": 9,
+   "labelLimit": 200,
+   "orient": "bottom",
+   "fill": "color",
+   "direction": "horizontal",
+   "symbolType": "square"
+  }
+ ],
+ "config": {
+  "axis": {
+   "labelFontSize": 10,
+   "titleFontSize": 10,
+   "labelColor": "#565656",
+   "titleColor": "#565656"
+  },
+  "style": {
+   "cell": {
+    "stroke": null
+   }
+  }
+ }
+}

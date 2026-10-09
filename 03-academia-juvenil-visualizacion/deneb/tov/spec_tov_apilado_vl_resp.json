@@ -1,0 +1,197 @@
+{
+ "description": "[RESPONSIVO · container] TOV Áncash · dataset = Power BI",
+ "background": "transparent",
+ "padding": 6,
+ "config": {
+  "view": {
+   "stroke": null
+  },
+  "axis": {
+   "labelFontSize": 10,
+   "titleFontSize": 10,
+   "labelColor": "#565656",
+   "titleColor": "#565656"
+  }
+ },
+ "data": {
+  "name": "dataset"
+ },
+ "transform": [
+  {
+   "filter": "isValid(datum.tramo)"
+  },
+  {
+   "calculate": "indexof(['Desacuerdo marcado','Desacuerdo','Posición intermedia','Acuerdo','Acuerdo marcado'], datum.tramo)",
+   "as": "_ord"
+  },
+  {
+   "joinaggregate": [
+    {
+     "op": "mean",
+     "field": "valor",
+     "as": "area_mean"
+    }
+   ],
+   "groupby": [
+    "area"
+   ]
+  },
+  {
+   "aggregate": [
+    {
+     "op": "count",
+     "as": "n"
+    },
+    {
+     "op": "max",
+     "field": "area_mean",
+     "as": "area_mean"
+    },
+    {
+     "op": "max",
+     "field": "_ord",
+     "as": "_ord"
+    }
+   ],
+   "groupby": [
+    "area",
+    "tramo"
+   ]
+  },
+  {
+   "stack": "n",
+   "groupby": [
+    "area"
+   ],
+   "sort": [
+    {
+     "field": "_ord",
+     "order": "ascending"
+    }
+   ],
+   "offset": "normalize",
+   "as": [
+    "y0",
+    "y1"
+   ]
+  },
+  {
+   "calculate": "(datum.y0+datum.y1)/2",
+   "as": "yc"
+  },
+  {
+   "calculate": "format(datum.y1-datum.y0,'.0%')",
+   "as": "pct"
+  }
+ ],
+ "layer": [
+  {
+   "mark": {
+    "type": "bar"
+   },
+   "encoding": {
+    "y": {
+     "field": "area",
+     "type": "nominal",
+     "sort": {
+      "field": "area_mean",
+      "op": "max",
+      "order": "descending"
+     },
+     "axis": {
+      "title": null,
+      "labelLimit": 240
+     }
+    },
+    "x": {
+     "field": "y0",
+     "type": "quantitative",
+     "axis": {
+      "title": "% de estudiantes",
+      "format": ".0%"
+     }
+    },
+    "x2": {
+     "field": "y1"
+    },
+    "color": {
+     "field": "tramo",
+     "type": "nominal",
+     "scale": {
+      "domain": [
+       "Desacuerdo marcado",
+       "Desacuerdo",
+       "Posición intermedia",
+       "Acuerdo",
+       "Acuerdo marcado"
+      ],
+      "range": [
+       "#C00000",
+       "#ED7D31",
+       "#BFA26B",
+       "#9CC069",
+       "#2E7D32"
+      ]
+     },
+     "legend": {
+      "title": null,
+      "orient": "bottom",
+      "columns": 3,
+      "labelFontSize": 9,
+      "labelLimit": 200
+     }
+    },
+    "tooltip": [
+     {
+      "field": "area",
+      "type": "nominal",
+      "title": "Área"
+     },
+     {
+      "field": "tramo",
+      "type": "nominal",
+      "title": "Descriptor"
+     },
+     {
+      "field": "n",
+      "type": "quantitative",
+      "title": "Estudiantes"
+     }
+    ]
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "datum.y1 - datum.y0 >= 0.06"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "color": "#FFFFFF",
+    "fontSize": 9,
+    "fontWeight": "bold"
+   },
+   "encoding": {
+    "y": {
+     "field": "area",
+     "type": "nominal",
+     "sort": {
+      "field": "area_mean",
+      "op": "max",
+      "order": "descending"
+     }
+    },
+    "x": {
+     "field": "yc",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "pct"
+    }
+   }
+  }
+ ],
+ "width": "container",
+ "height": "container"
+}

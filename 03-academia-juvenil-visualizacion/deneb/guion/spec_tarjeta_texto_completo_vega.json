@@ -1,0 +1,270 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "[TARJETA · TEXTO COMPLETO v6 · Vega nativo] TOV Academia Juvenil 2026. Los 4 parrafos como texto corrido. Salto de linea DINAMICO: se calcula con el ancho real del contenedor (pbiContainerWidth) -> multilinea y sin desbordar. Se ajusta a la altura del contenedor (pbiContainerHeight). Values: Guion_TOV[orden] + Guion_TOV[grafico] + [TXT_Parrafo].",
+  "autosize": "none",
+  "width": {
+    "signal": "W"
+  },
+  "height": {
+    "signal": "H"
+  },
+  "padding": 0,
+  "background": "transparent",
+  "signals": [
+    {
+      "name": "W",
+      "value": 640,
+      "update": "pbiContainerWidth"
+    },
+    {
+      "name": "H",
+      "value": 420,
+      "update": "pbiContainerHeight"
+    },
+    {
+      "name": "cfg_fs",
+      "value": 12
+    },
+    {
+      "name": "cfg_fs_t",
+      "value": 11
+    },
+    {
+      "name": "cfg_lh",
+      "value": 17
+    },
+    {
+      "name": "cfg_char_w",
+      "value": 0.55
+    },
+    {
+      "name": "padL",
+      "value": 18
+    },
+    {
+      "name": "padR",
+      "value": 16
+    },
+    {
+      "name": "padT",
+      "value": 10
+    },
+    {
+      "name": "padB",
+      "value": 10
+    },
+    {
+      "name": "chars",
+      "update": "max(24, floor((W - padL - padR - 4) / (cfg_fs * cfg_char_w)))"
+    },
+    {
+      "name": "alto_tot",
+      "update": "data('b1')[0] ? data('b1')[0].alto : 0"
+    },
+    {
+      "name": "esc",
+      "update": "alto_tot > 0 ? clamp((H - padT - padB) / alto_tot, 0.6, 1) : 1"
+    }
+  ],
+  "data": [
+    {
+      "name": "dataset"
+    },
+    {
+      "name": "b0",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum.TXT_Parrafo) && datum.TXT_Parrafo !== '' && datum.TXT_Parrafo !== 'Sin datos'"
+        },
+        {
+          "type": "collect",
+          "sort": {
+            "field": "orden"
+          }
+        },
+        {
+          "type": "identifier",
+          "as": "idx"
+        },
+        {
+          "type": "formula",
+          "expr": "replace(datum.TXT_Parrafo, regexp('(.{1,' + chars + '})(\\\\s|$)', 'g'), '$1\\n')",
+          "as": "cuerpo"
+        },
+        {
+          "type": "formula",
+          "expr": "upper(datum.grafico)",
+          "as": "titulo"
+        },
+        {
+          "type": "formula",
+          "expr": "length(split(datum.cuerpo, '\\n')) - 1",
+          "as": "nlin"
+        },
+        {
+          "type": "formula",
+          "expr": "14 + datum.nlin * cfg_lh + 10",
+          "as": "bloque"
+        },
+        {
+          "type": "window",
+          "sort": {
+            "field": "orden"
+          },
+          "ops": [
+            "sum"
+          ],
+          "fields": [
+            "bloque"
+          ],
+          "as": [
+            "cum"
+          ]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.cum - datum.bloque",
+          "as": "ypar"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.ypar + 16",
+          "as": "ybody"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.ypar + datum.bloque",
+          "as": "yfin"
+        }
+      ]
+    },
+    {
+      "name": "b1",
+      "source": "b0",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [],
+          "ops": [
+            "max"
+          ],
+          "fields": [
+            "yfin"
+          ],
+          "as": [
+            "alto"
+          ]
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rule",
+      "from": {
+        "data": "b1"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 6
+          },
+          "x2": {
+            "value": 6
+          },
+          "y": {
+            "signal": "padT"
+          },
+          "y2": {
+            "signal": "padT + datum.alto * esc"
+          },
+          "stroke": {
+            "value": "#1F4E79"
+          },
+          "strokeWidth": {
+            "value": 2
+          },
+          "opacity": {
+            "value": 0.8
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "b0"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 18
+          },
+          "y": {
+            "signal": "padT + datum.ypar * esc"
+          },
+          "text": {
+            "field": "titulo"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "font": {
+            "value": "Segoe UI, sans-serif"
+          },
+          "fontSize": {
+            "signal": "cfg_fs_t * esc"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#1F4E79"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "b0"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 18
+          },
+          "y": {
+            "signal": "padT + datum.ybody * esc"
+          },
+          "text": {
+            "field": "cuerpo"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "font": {
+            "value": "Segoe UI, sans-serif"
+          },
+          "fontSize": {
+            "signal": "cfg_fs * esc"
+          },
+          "lineHeight": {
+            "signal": "cfg_lh * esc"
+          },
+          "fill": {
+            "value": "#404040"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -30,3 +30,17 @@ a partir de agregados. **Nunca parte de datos identificables**: trabaja sobre co
 ## Nota metodológica
 Antes de cualquier gráfico se depura la base: se exige un mínimo de respuestas por corte, se excluyen registros
 incompletos y se documenta cuántos casos quedan fuera y por qué. Un gráfico de flujo sin ese control miente.
+
+## Visuales Deneb (código a medida)
+
+La carpeta **[`deneb/`](deneb/)** reúne las especificaciones **Deneb (Vega / Vega-Lite)** de los visuales
+construidos a medida: el **Sankey con banda de 3 indicadores (retención / crecimiento / retroceso)**, los
+**5 gráficos del TOV** (radar grupal, radar individual, barras ordenadas, apilado 100 %, termómetro de
+bloques) y la **tarjeta de conclusiones dinámicas**.
+
+Contienen **solo la parte estructural** — geometría, escalas, ejes, paleta, umbrales y las señales que
+los hacen funcionar —, sin datos de estudiantes ni credenciales. Cada spec declara
+`"data": {"name": "dataset"}` para tomar los datos del modelo de Power BI. Los ejemplos de
+`data/synthetic/` son **sintéticos** (`tools/make_synthetic_deneb_demo.py`).
+
+Índice, campos por gráfico y lecciones de Deneb 2.0: [`deneb/README.md`](deneb/README.md).

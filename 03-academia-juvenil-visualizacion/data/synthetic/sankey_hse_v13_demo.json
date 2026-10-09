@@ -1,0 +1,770 @@
+[
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Muy bajo",
+    "Orden_Corte_Destino": 1,
+    "N": 3
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 4
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 1
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Muy bajo",
+    "Orden_Corte_Destino": 1,
+    "N": 4
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 1
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 2
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 3
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 2
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 3
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 4
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 1
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 4
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 1
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 2
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 3
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 2
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 3
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 4
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 1
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 4
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 1
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 2
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Muy alto",
+    "Orden_Corte_Origen": 7,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 2
+  },
+  {
+    "Habilidad": "Asertividad",
+    "Categoria_Origen": "Muy alto",
+    "Orden_Corte_Origen": 7,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 3
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Muy bajo",
+    "Orden_Corte_Destino": 1,
+    "N": 3
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 4
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 1
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Muy bajo",
+    "Orden_Corte_Destino": 1,
+    "N": 4
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 1
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 2
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 3
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 2
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 3
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 4
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 1
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 4
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 1
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 2
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 3
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 2
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 3
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 4
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 1
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 4
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 1
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 2
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Muy alto",
+    "Orden_Corte_Origen": 7,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 2
+  },
+  {
+    "Habilidad": "Comunicación",
+    "Categoria_Origen": "Muy alto",
+    "Orden_Corte_Origen": 7,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 3
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Muy bajo",
+    "Orden_Corte_Destino": 1,
+    "N": 3
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 4
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 1
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Muy bajo",
+    "Orden_Corte_Destino": 1,
+    "N": 4
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 1
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 2
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 3
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 2
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 3
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 4
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 1
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 4
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 1
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 2
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 3
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 2
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 3
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 4
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 1
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 4
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 1
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 2
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Muy alto",
+    "Orden_Corte_Origen": 7,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 2
+  },
+  {
+    "Habilidad": "Autoestima",
+    "Categoria_Origen": "Muy alto",
+    "Orden_Corte_Origen": 7,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 3
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Muy bajo",
+    "Orden_Corte_Destino": 1,
+    "N": 3
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 4
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Muy bajo",
+    "Orden_Corte_Origen": 1,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 1
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Muy bajo",
+    "Orden_Corte_Destino": 1,
+    "N": 4
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 1
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 2
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Bajo",
+    "Orden_Corte_Origen": 2,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 3
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Bajo",
+    "Orden_Corte_Destino": 2,
+    "N": 2
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 3
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 4
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio bajo",
+    "Orden_Corte_Origen": 3,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 1
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio bajo",
+    "Orden_Corte_Destino": 3,
+    "N": 4
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 1
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 2
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio",
+    "Orden_Corte_Origen": 4,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 3
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Medio",
+    "Orden_Corte_Destino": 4,
+    "N": 2
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 3
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 4
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Medio alto",
+    "Orden_Corte_Origen": 5,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 1
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Medio alto",
+    "Orden_Corte_Destino": 5,
+    "N": 4
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 1
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Alto",
+    "Orden_Corte_Origen": 6,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 2
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Muy alto",
+    "Orden_Corte_Origen": 7,
+    "Categoria_Destino": "Alto",
+    "Orden_Corte_Destino": 6,
+    "N": 2
+  },
+  {
+    "Habilidad": "Toma de Decisiones",
+    "Categoria_Origen": "Muy alto",
+    "Orden_Corte_Origen": 7,
+    "Categoria_Destino": "Muy alto",
+    "Orden_Corte_Destino": 7,
+    "N": 3
+  }
+]

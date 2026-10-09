@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "[TARJETA DE CONCLUSIONES · Vega-Lite resp] TOV Academia Juvenil. 4 carriles (uno por grafico); el texto es dinamico y cambia con los filtros. Campos: Guion_TOV[orden] + Guion_TOV[grafico] + [TXT_Parrafo]. Pega este si tu Provider dice Vega-Lite.",
+  "data": {
+    "name": "dataset"
+  },
+  "background": "transparent",
+  "width": "container",
+  "height": "container",
+  "padding": 10,
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "transform": [
+    {
+      "filter": "isValid(datum.TXT_Parrafo) && datum.TXT_Parrafo !== ''"
+    },
+    {
+      "calculate": "upper(datum.grafico) + '\\n' + replace(datum.TXT_Parrafo, /(.{1,90})(\\s|$)/g, '$1\\n')",
+      "as": "bloque"
+    }
+  ],
+  "mark": {
+    "type": "text",
+    "align": "left",
+    "baseline": "top",
+    "font": "Segoe UI",
+    "fontSize": 12,
+    "lineHeight": 16,
+    "color": "#333333"
+  },
+  "encoding": {
+    "y": {
+      "field": "orden",
+      "type": "ordinal",
+      "axis": null
+    },
+    "x": {
+      "value": 0
+    },
+    "text": {
+      "field": "bloque",
+      "type": "nominal"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+// ============================================================================
+//  TARJETA DE CONCLUSIONES DINÁMICAS · TOV Academia Juvenil 2026 (Áncash)  v2
+//  1 párrafo por gráfico. El texto se rearma con los filtros de la página.
+//
+//  IMPORTANTE (v2): cada medida es AUTOSUFICIENTE. Ya NO depende de las
+//  medidas "G · ..." ni "TOV · ...". Solo usa las tablas base:
+//        TOV_Areas   (campos: area, orden, valor, tramo)
+//        TOV_Bloques (campos: bloque, orden, valor)
+//  Así no hay errores de "no se encuentra el nombre [G · ...]".
+// ============================================================================
+
+
+// ────────────────────────────────────────────────────────────────────────────
+//  PASO 1 · Tabla desconectada con el guion  (Modelado > Nueva tabla)
+// ────────────────────────────────────────────────────────────────────────────
+
+Guion_TOV =
+DATATABLE (
+    "orden",   INTEGER,
+    "grafico", STRING,
+    {
+        { 1, "Radar grupal" },
+        { 2, "Barras ordenadas" },
+        { 3, "Apilado 100" },
+        { 4, "Termometro de bloques" }
+    }
+)
+
+
+// ────────────────────────────────────────────────────────────────────────────
+//  PASO 2 · Los 4 párrafos  (Modelado > Nueva medida, una por una)
+// ────────────────────────────────────────────────────────────────────────────
+
+// Párrafo 1 · Radar grupal
+TXT_Radar =
+VAR p     = AVERAGE ( TOV_Areas[valor] )
+VAR nivel =
+    SWITCH (
+        TRUE (),
+        ISBLANK ( p ), "Sin datos",
+        p <= 1.80,     "Desacuerdo marcado",
+        p <= 2.60,     "Desacuerdo",
+        p <= 3.40,     "Posición intermedia",
+        p <= 4.20,     "Acuerdo",
+        "Acuerdo marcado"
+    )
+VAR r     = VALUES ( TOV_Areas[area] )
+VAR alto  = CONCATENATEX ( TOPN ( 1, r, CALCULATE ( AVERAGE ( TOV_Areas[valor] ) ), DESC ), TOV_Areas[area], " / " )
+VAR bajo  = CONCATENATEX ( TOPN ( 1, r, CALCULATE ( AVERAGE ( TOV_Areas[valor] ) ), ASC ),  TOV_Areas[area], " / " )
+VAR nAc   = COUNTROWS ( FILTER ( r, CALCULATE ( AVERAGE ( TOV_Areas[valor] ) ) >= 3.41 ) )
+VAR nArea = COUNTROWS ( r )
+RETURN
+    "El promedio del grupo es " & FORMAT ( p, "0.00" ) & " (" & nivel & "). " &
+    "La afinidad más alta está en " & alto & " y la más baja en " & bajo & ". " &
+    nAc & " de " & nArea & " áreas ya superan el umbral de Acuerdo (3.41)."
+
+// Párrafo 2 · Barras ordenadas
+TXT_Barras =
+VAR r      = VALUES ( TOV_Areas[area] )
+VAR alto   = CONCATENATEX ( TOPN ( 1, r, CALCULATE ( AVERAGE ( TOV_Areas[valor] ) ), DESC ), TOV_Areas[area], " / " )
+VAR bajo   = CONCATENATEX ( TOPN ( 1, r, CALCULATE ( AVERAGE ( TOV_Areas[valor] ) ), ASC ),  TOV_Areas[area], " / " )
+VAR pAlto  = MAXX ( r, CALCULATE ( AVERAGE ( TOV_Areas[valor] ) ) )
+VAR pBajo  = MINX ( r, CALCULATE ( AVERAGE ( TOV_Areas[valor] ) ) )
+VAR brecha = pAlto - pBajo
+RETURN
+    "Ordenando las áreas por promedio, encabeza " & alto & " (" & FORMAT ( pAlto, "0.00" ) & ") y cierra " & bajo & " (" & FORMAT ( pBajo, "0.00" ) & "). " &
+    "La brecha entre la primera y la última es de " & FORMAT ( brecha, "0.00" ) & " puntos: " &
+    IF ( brecha >= 0.8, "hay un perfil con fortalezas claras.", "el grupo tiene un perfil parejo, sin extremos." )
+
+// Párrafo 3 · Apilado 100 %
+TXT_Apilado =
+VAR nTotal = COUNTROWS ( TOV_Areas )
+VAR nAc    = CALCULATE ( COUNTROWS ( TOV_Areas ), TOV_Areas[tramo] IN { "Acuerdo", "Acuerdo marcado" } )
+VAR nDes   = CALCULATE ( COUNTROWS ( TOV_Areas ), TOV_Areas[tramo] IN { "Desacuerdo", "Desacuerdo marcado" } )
+VAR nInter = nTotal - nAc - nDes
+RETURN
+    "De todas las lecturas, " & FORMAT ( DIVIDE ( nAc, nTotal ), "0.0%" ) & " están en Acuerdo, " &
+    FORMAT ( DIVIDE ( nInter, nTotal ), "0.0%" ) & " en Posición intermedia y " &
+    FORMAT ( DIVIDE ( nDes, nTotal ), "0.0%" ) & " en Desacuerdo. " &
+    IF ( DIVIDE ( nDes, nTotal ) >= 0.20,
+         "El bloque en desacuerdo es el punto de partida para la tutoría.",
+         "La mayoría del grupo ya declara acuerdo; el foco es sostenerlo." )
+
+// Párrafo 4 · Termómetro de bloques
+TXT_Termometro =
+VAR pBlo = AVERAGE ( TOV_Bloques[valor] )
+VAR rB   = VALUES ( TOV_Bloques[bloque] )
+VAR bajo = CONCATENATEX ( TOPN ( 1, rB, CALCULATE ( AVERAGE ( TOV_Bloques[valor] ) ), ASC ), TOV_Bloques[bloque], " / " )
+VAR barr = CALCULATE ( AVERAGE ( TOV_Bloques[valor] ), TOV_Bloques[bloque] = "Barreras percibidas" )
+RETURN
+    "El proceso de decisión promedia " & FORMAT ( pBlo, "0.00" ) & ". " &
+    "El bloque con menor puntaje es " & bajo & ": es el que conviene trabajar primero. " &
+    IF ( ISBLANK ( barr ), "",
+         "Ojo: las barreras percibidas promedian " & FORMAT ( barr, "0.00" ) & " (más alto = más obstáculos)." )
+
+
+// ────────────────────────────────────────────────────────────────────────────
+//  PASO 3 · El conmutador (ESTA es la medida que va al visual Deneb)
+// ────────────────────────────────────────────────────────────────────────────
+
+TXT_Parrafo =
+SWITCH (
+    SELECTEDVALUE ( Guion_TOV[grafico] ),
+    "Radar grupal",          [TXT_Radar],
+    "Barras ordenadas",      [TXT_Barras],
+    "Apilado 100",           [TXT_Apilado],
+    "Termometro de bloques", [TXT_Termometro],
+    "Sin datos"
+)
+
+
+// ============================================================================
+//  NOTAS
+//  · Campos que van al visual Deneb (Values):
+//        Guion_TOV[orden]  ·  Guion_TOV[grafico]  ·  [TXT_Parrafo]
+//  · Nombres de variable prohibidos en DAX (por eso NO uso 'desc'):
+//        DESC, ASC, TABLE, COLUMN, VAR, RETURN, ORDER, BY, START, END, ...
+//  · Umbrales ajustables: 3.41 (Acuerdo), 0.8 (brecha), 20 % (desacuerdo).
+//  · Requiere que existan las tablas TOV_Areas y TOV_Bloques con esos campos.
+// ============================================================================

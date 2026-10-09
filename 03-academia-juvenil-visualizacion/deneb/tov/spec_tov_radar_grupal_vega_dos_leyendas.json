@@ -1,0 +1,1300 @@
+{
+ "$schema": "https://vega.github.io/schema/vega/v6.json",
+ "description": "[RESPONSIVO · container] TOV Áncash · dataset = Power BI",
+ "autosize": {
+  "type": "fit",
+  "contains": "padding"
+ },
+ "background": "transparent",
+ "padding": 6,
+ "style": "cell",
+ "data": [
+  {
+   "name": "dataset"
+  },
+  {
+   "name": "source_0",
+   "values": [
+    {
+     "x": 0,
+     "y": -1,
+     "o": 0,
+     "anillo": "r1"
+    },
+    {
+     "x": 0.5,
+     "y": -0.866,
+     "o": 1,
+     "anillo": "r1"
+    },
+    {
+     "x": 0.866,
+     "y": -0.5,
+     "o": 2,
+     "anillo": "r1"
+    },
+    {
+     "x": 1,
+     "y": 0,
+     "o": 3,
+     "anillo": "r1"
+    },
+    {
+     "x": 0.866,
+     "y": 0.5,
+     "o": 4,
+     "anillo": "r1"
+    },
+    {
+     "x": 0.5,
+     "y": 0.866,
+     "o": 5,
+     "anillo": "r1"
+    },
+    {
+     "x": 0,
+     "y": 1,
+     "o": 6,
+     "anillo": "r1"
+    },
+    {
+     "x": -0.5,
+     "y": 0.866,
+     "o": 7,
+     "anillo": "r1"
+    },
+    {
+     "x": -0.866,
+     "y": 0.5,
+     "o": 8,
+     "anillo": "r1"
+    },
+    {
+     "x": -1,
+     "y": 0,
+     "o": 9,
+     "anillo": "r1"
+    },
+    {
+     "x": -0.866,
+     "y": -0.5,
+     "o": 10,
+     "anillo": "r1"
+    },
+    {
+     "x": -0.5,
+     "y": -0.866,
+     "o": 11,
+     "anillo": "r1"
+    },
+    {
+     "x": 0,
+     "y": -1,
+     "o": 12,
+     "anillo": "r1"
+    },
+    {
+     "x": 0,
+     "y": -2,
+     "o": 0,
+     "anillo": "r2"
+    },
+    {
+     "x": 1,
+     "y": -1.7321,
+     "o": 1,
+     "anillo": "r2"
+    },
+    {
+     "x": 1.7321,
+     "y": -1,
+     "o": 2,
+     "anillo": "r2"
+    },
+    {
+     "x": 2,
+     "y": 0,
+     "o": 3,
+     "anillo": "r2"
+    },
+    {
+     "x": 1.7321,
+     "y": 1,
+     "o": 4,
+     "anillo": "r2"
+    },
+    {
+     "x": 1,
+     "y": 1.7321,
+     "o": 5,
+     "anillo": "r2"
+    },
+    {
+     "x": 0,
+     "y": 2,
+     "o": 6,
+     "anillo": "r2"
+    },
+    {
+     "x": -1,
+     "y": 1.7321,
+     "o": 7,
+     "anillo": "r2"
+    },
+    {
+     "x": -1.7321,
+     "y": 1,
+     "o": 8,
+     "anillo": "r2"
+    },
+    {
+     "x": -2,
+     "y": 0,
+     "o": 9,
+     "anillo": "r2"
+    },
+    {
+     "x": -1.7321,
+     "y": -1,
+     "o": 10,
+     "anillo": "r2"
+    },
+    {
+     "x": -1,
+     "y": -1.7321,
+     "o": 11,
+     "anillo": "r2"
+    },
+    {
+     "x": 0,
+     "y": -2,
+     "o": 12,
+     "anillo": "r2"
+    },
+    {
+     "x": 0,
+     "y": -3,
+     "o": 0,
+     "anillo": "r3"
+    },
+    {
+     "x": 1.5,
+     "y": -2.5981,
+     "o": 1,
+     "anillo": "r3"
+    },
+    {
+     "x": 2.5981,
+     "y": -1.5,
+     "o": 2,
+     "anillo": "r3"
+    },
+    {
+     "x": 3,
+     "y": 0,
+     "o": 3,
+     "anillo": "r3"
+    },
+    {
+     "x": 2.5981,
+     "y": 1.5,
+     "o": 4,
+     "anillo": "r3"
+    },
+    {
+     "x": 1.5,
+     "y": 2.5981,
+     "o": 5,
+     "anillo": "r3"
+    },
+    {
+     "x": 0,
+     "y": 3,
+     "o": 6,
+     "anillo": "r3"
+    },
+    {
+     "x": -1.5,
+     "y": 2.5981,
+     "o": 7,
+     "anillo": "r3"
+    },
+    {
+     "x": -2.5981,
+     "y": 1.5,
+     "o": 8,
+     "anillo": "r3"
+    },
+    {
+     "x": -3,
+     "y": 0,
+     "o": 9,
+     "anillo": "r3"
+    },
+    {
+     "x": -2.5981,
+     "y": -1.5,
+     "o": 10,
+     "anillo": "r3"
+    },
+    {
+     "x": -1.5,
+     "y": -2.5981,
+     "o": 11,
+     "anillo": "r3"
+    },
+    {
+     "x": 0,
+     "y": -3,
+     "o": 12,
+     "anillo": "r3"
+    },
+    {
+     "x": 0,
+     "y": -4,
+     "o": 0,
+     "anillo": "r4"
+    },
+    {
+     "x": 2,
+     "y": -3.4641,
+     "o": 1,
+     "anillo": "r4"
+    },
+    {
+     "x": 3.4641,
+     "y": -2,
+     "o": 2,
+     "anillo": "r4"
+    },
+    {
+     "x": 4,
+     "y": 0,
+     "o": 3,
+     "anillo": "r4"
+    },
+    {
+     "x": 3.4641,
+     "y": 2,
+     "o": 4,
+     "anillo": "r4"
+    },
+    {
+     "x": 2,
+     "y": 3.4641,
+     "o": 5,
+     "anillo": "r4"
+    },
+    {
+     "x": 0,
+     "y": 4,
+     "o": 6,
+     "anillo": "r4"
+    },
+    {
+     "x": -2,
+     "y": 3.4641,
+     "o": 7,
+     "anillo": "r4"
+    },
+    {
+     "x": -3.4641,
+     "y": 2,
+     "o": 8,
+     "anillo": "r4"
+    },
+    {
+     "x": -4,
+     "y": 0,
+     "o": 9,
+     "anillo": "r4"
+    },
+    {
+     "x": -3.4641,
+     "y": -2,
+     "o": 10,
+     "anillo": "r4"
+    },
+    {
+     "x": -2,
+     "y": -3.4641,
+     "o": 11,
+     "anillo": "r4"
+    },
+    {
+     "x": 0,
+     "y": -4,
+     "o": 12,
+     "anillo": "r4"
+    },
+    {
+     "x": 0,
+     "y": -5,
+     "o": 0,
+     "anillo": "r5"
+    },
+    {
+     "x": 2.5,
+     "y": -4.3301,
+     "o": 1,
+     "anillo": "r5"
+    },
+    {
+     "x": 4.3301,
+     "y": -2.5,
+     "o": 2,
+     "anillo": "r5"
+    },
+    {
+     "x": 5,
+     "y": 0,
+     "o": 3,
+     "anillo": "r5"
+    },
+    {
+     "x": 4.3301,
+     "y": 2.5,
+     "o": 4,
+     "anillo": "r5"
+    },
+    {
+     "x": 2.5,
+     "y": 4.3301,
+     "o": 5,
+     "anillo": "r5"
+    },
+    {
+     "x": 0,
+     "y": 5,
+     "o": 6,
+     "anillo": "r5"
+    },
+    {
+     "x": -2.5,
+     "y": 4.3301,
+     "o": 7,
+     "anillo": "r5"
+    },
+    {
+     "x": -4.3301,
+     "y": 2.5,
+     "o": 8,
+     "anillo": "r5"
+    },
+    {
+     "x": -5,
+     "y": 0,
+     "o": 9,
+     "anillo": "r5"
+    },
+    {
+     "x": -4.3301,
+     "y": -2.5,
+     "o": 10,
+     "anillo": "r5"
+    },
+    {
+     "x": -2.5,
+     "y": -4.3301,
+     "o": 11,
+     "anillo": "r5"
+    },
+    {
+     "x": 0,
+     "y": -5,
+     "o": 12,
+     "anillo": "r5"
+    }
+   ]
+  },
+  {
+   "name": "source_1",
+   "values": [
+    {
+     "x": 0,
+     "y": -3.41,
+     "o": 0,
+     "anillo": "umbral"
+    },
+    {
+     "x": 1.705,
+     "y": -2.9531,
+     "o": 1,
+     "anillo": "umbral"
+    },
+    {
+     "x": 2.9531,
+     "y": -1.705,
+     "o": 2,
+     "anillo": "umbral"
+    },
+    {
+     "x": 3.41,
+     "y": 0,
+     "o": 3,
+     "anillo": "umbral"
+    },
+    {
+     "x": 2.9531,
+     "y": 1.705,
+     "o": 4,
+     "anillo": "umbral"
+    },
+    {
+     "x": 1.705,
+     "y": 2.9531,
+     "o": 5,
+     "anillo": "umbral"
+    },
+    {
+     "x": 0,
+     "y": 3.41,
+     "o": 6,
+     "anillo": "umbral"
+    },
+    {
+     "x": -1.705,
+     "y": 2.9531,
+     "o": 7,
+     "anillo": "umbral"
+    },
+    {
+     "x": -2.9531,
+     "y": 1.705,
+     "o": 8,
+     "anillo": "umbral"
+    },
+    {
+     "x": -3.41,
+     "y": 0,
+     "o": 9,
+     "anillo": "umbral"
+    },
+    {
+     "x": -2.9531,
+     "y": -1.705,
+     "o": 10,
+     "anillo": "umbral"
+    },
+    {
+     "x": -1.705,
+     "y": -2.9531,
+     "o": 11,
+     "anillo": "umbral"
+    },
+    {
+     "x": 0,
+     "y": -3.41,
+     "o": 12,
+     "anillo": "umbral"
+    }
+   ]
+  },
+  {
+   "name": "source_2",
+   "values": [
+    {
+     "x": 0,
+     "y": 0,
+     "x2": 0,
+     "y2": -5.5
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": 2.75,
+     "y2": -4.7631
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": 4.7631,
+     "y2": -2.75
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": 5.5,
+     "y2": 0
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": 4.7631,
+     "y2": 2.75
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": 2.75,
+     "y2": 4.7631
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": 0,
+     "y2": 5.5
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": -2.75,
+     "y2": 4.7631
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": -4.7631,
+     "y2": 2.75
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": -5.5,
+     "y2": 0
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": -4.7631,
+     "y2": -2.75
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "x2": -2.75,
+     "y2": -4.7631
+    }
+   ]
+  },
+  {
+   "name": "source_3",
+   "values": [
+    {
+     "x": 0,
+     "y": -6.25,
+     "txt": "Ciencias"
+    },
+    {
+     "x": 3.125,
+     "y": -5.4127,
+     "txt": "Numérica"
+    },
+    {
+     "x": 5.4127,
+     "y": -3.125,
+     "txt": "Ingeniería"
+    },
+    {
+     "x": 6.25,
+     "y": 0,
+     "txt": "Artística"
+    },
+    {
+     "x": 5.4127,
+     "y": 3.125,
+     "txt": "Social"
+    },
+    {
+     "x": 3.125,
+     "y": 5.4127,
+     "txt": "Emprendedora"
+    },
+    {
+     "x": 0,
+     "y": 6.25,
+     "txt": "Salud"
+    },
+    {
+     "x": -3.125,
+     "y": 5.4127,
+     "txt": "Gastronomía"
+    },
+    {
+     "x": -5.4127,
+     "y": 3.125,
+     "txt": "Estética"
+    },
+    {
+     "x": -6.25,
+     "y": 0,
+     "txt": "Deportiva"
+    },
+    {
+     "x": -5.4127,
+     "y": -3.125,
+     "txt": "Seguridad y\ndefensa"
+    },
+    {
+     "x": -3.125,
+     "y": -5.4127,
+     "txt": "Aeronáutica y\nvuelo"
+    }
+   ]
+  },
+  {
+   "name": "source_4",
+   "values": [
+    {
+     "x": 3.9,
+     "y": -3.9,
+     "txt": "umbral 3.41"
+    }
+   ]
+  },
+  {
+   "name": "data_0",
+   "source": "dataset",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum.valor)"
+    },
+    {
+     "type": "aggregate",
+     "groupby": [
+      "area",
+      "orden"
+     ],
+     "ops": [
+      "mean",
+      "valid"
+     ],
+     "fields": [
+      "valor",
+      "valor"
+     ],
+     "as": [
+      "promedio",
+      "n"
+     ]
+    },
+    {
+     "type": "formula",
+     "expr": "-PI/2 + 2*PI*(datum.orden-1)/12",
+     "as": "ang"
+    },
+    {
+     "type": "formula",
+     "expr": "datum.promedio * cos(datum.ang)",
+     "as": "x"
+    },
+    {
+     "type": "formula",
+     "expr": "datum.promedio * sin(datum.ang)",
+     "as": "y"
+    },
+    {
+     "type": "formula",
+     "expr": "datum.promedio == 0 ? 'Sin datos' : datum.promedio <= 1.80 ? 'Desacuerdo marcado' : datum.promedio <= 2.60 ? 'Desacuerdo' : datum.promedio <= 3.40 ? 'Posición intermedia' : datum.promedio <= 4.20 ? 'Acuerdo' : 'Acuerdo marcado'",
+     "as": "descriptor"
+    }
+   ]
+  },
+  {
+   "name": "data_1",
+   "source": "data_0",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.orden == 1 || datum.orden == 12"
+    }
+   ]
+  },
+  {
+   "name": "data_2",
+   "source": "data_0",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "datum.promedio > 0"
+    },
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"y\"]) && isFinite(+datum[\"y\"])"
+    }
+   ]
+  },
+  {
+   "name": "data_3",
+   "source": "source_2",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"y\"]) && isFinite(+datum[\"y\"])"
+    }
+   ]
+  },
+  {
+   "name": "data_4",
+   "source": "source_3",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"y\"]) && isFinite(+datum[\"y\"])"
+    }
+   ]
+  },
+  {
+   "name": "data_5",
+   "source": "source_4",
+   "transform": [
+    {
+     "type": "filter",
+     "expr": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"y\"]) && isFinite(+datum[\"y\"])"
+    }
+   ]
+  }
+ ],
+ "signals": [
+  {
+   "name": "width",
+   "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+   "on": [
+    {
+     "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+     "events": "window:resize"
+    }
+   ]
+  },
+  {
+   "name": "height",
+   "init": "isFinite(containerSize()[1]) ? containerSize()[1] : 300",
+   "on": [
+    {
+     "update": "isFinite(containerSize()[1]) ? containerSize()[1] : 300",
+     "events": "window:resize"
+    }
+   ]
+  }
+ ],
+ "marks": [
+  {
+   "name": "layer_0_pathgroup",
+   "type": "group",
+   "from": {
+    "facet": {
+     "name": "faceted_path_layer_0_main",
+     "data": "source_0",
+     "groupby": [
+      "anillo"
+     ]
+    }
+   },
+   "encode": {
+    "update": {
+     "width": {
+      "field": {
+       "group": "width"
+      }
+     },
+     "height": {
+      "field": {
+       "group": "height"
+      }
+     }
+    }
+   },
+   "marks": [
+    {
+     "name": "layer_0_marks",
+     "type": "line",
+     "style": [
+      "line"
+     ],
+     "sort": {
+      "field": [
+       "datum[\"o\"]"
+      ],
+      "order": [
+       "ascending"
+      ]
+     },
+     "from": {
+      "data": "faceted_path_layer_0_main"
+     },
+     "encode": {
+      "update": {
+       "strokeWidth": {
+        "value": 1
+       },
+       "stroke": {
+        "value": "#E6E6E6"
+       },
+       "description": {
+        "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; y: \" + (format(datum[\"y\"], \"\")) + \"; o: \" + (isValid(datum[\"o\"]) ? isArray(datum[\"o\"]) ? join(datum[\"o\"], ' ') : datum[\"o\"] : \"\"+datum[\"o\"]) + \"; anillo: \" + (isValid(datum[\"anillo\"]) ? isArray(datum[\"anillo\"]) ? join(datum[\"anillo\"], ' ') : datum[\"anillo\"] : \"\"+datum[\"anillo\"])"
+       },
+       "x": {
+        "scale": "x",
+        "field": "x"
+       },
+       "y": {
+        "scale": "y",
+        "field": "y"
+       },
+       "defined": {
+        "signal": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"y\"]) && isFinite(+datum[\"y\"])"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "layer_1_marks",
+   "type": "line",
+   "style": [
+    "line"
+   ],
+   "sort": {
+    "field": [
+     "datum[\"o\"]"
+    ],
+    "order": [
+     "ascending"
+    ]
+   },
+   "from": {
+    "data": "source_1"
+   },
+   "encode": {
+    "update": {
+     "strokeWidth": {
+      "value": 1.4
+     },
+     "strokeDash": {
+      "value": [
+       5,
+       4
+      ]
+     },
+     "stroke": {
+      "value": "#F0A868"
+     },
+     "description": {
+      "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; y: \" + (format(datum[\"y\"], \"\")) + \"; o: \" + (isValid(datum[\"o\"]) ? isArray(datum[\"o\"]) ? join(datum[\"o\"], ' ') : datum[\"o\"] : \"\"+datum[\"o\"])"
+     },
+     "x": {
+      "scale": "x",
+      "field": "x"
+     },
+     "y": {
+      "scale": "y",
+      "field": "y"
+     },
+     "defined": {
+      "signal": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"y\"]) && isFinite(+datum[\"y\"])"
+     }
+    }
+   }
+  },
+  {
+   "name": "layer_2_marks",
+   "type": "rule",
+   "style": [
+    "rule"
+   ],
+   "from": {
+    "data": "data_3"
+   },
+   "encode": {
+    "update": {
+     "stroke": {
+      "value": "#EDEDED"
+     },
+     "description": {
+      "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; y: \" + (format(datum[\"y\"], \"\")) + \"; x2: \" + (format(datum[\"x2\"], \"\")) + \"; y2: \" + (format(datum[\"y2\"], \"\"))"
+     },
+     "x": {
+      "scale": "x",
+      "field": "x"
+     },
+     "x2": {
+      "scale": "x",
+      "field": "x2"
+     },
+     "y": {
+      "scale": "y",
+      "field": "y"
+     },
+     "y2": {
+      "scale": "y",
+      "field": "y2"
+     }
+    }
+   }
+  },
+  {
+   "name": "layer_3_marks",
+   "type": "text",
+   "style": [
+    "text"
+   ],
+   "from": {
+    "data": "data_4"
+   },
+   "encode": {
+    "update": {
+     "align": {
+      "value": "center"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "value": 9.5
+     },
+     "fill": {
+      "value": "#565656"
+     },
+     "description": {
+      "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; y: \" + (format(datum[\"y\"], \"\")) + \"; txt: \" + (isValid(datum[\"txt\"]) ? isArray(datum[\"txt\"]) ? join(datum[\"txt\"], ' ') : datum[\"txt\"] : \"\"+datum[\"txt\"])"
+     },
+     "x": {
+      "scale": "x",
+      "field": "x"
+     },
+     "y": {
+      "scale": "y",
+      "field": "y"
+     },
+     "text": {
+      "signal": "isValid(datum[\"txt\"]) ? datum[\"txt\"] : \"\"+datum[\"txt\"]"
+     }
+    }
+   }
+  },
+  {
+   "name": "layer_4_pathgroup",
+   "type": "group",
+   "from": {
+    "facet": {
+     "name": "faceted_path_layer_4_main",
+     "data": "data_0",
+     "groupby": [
+      "periodo"
+     ]
+    }
+   },
+   "encode": {
+    "update": {
+     "width": {
+      "field": {
+       "group": "width"
+      }
+     },
+     "height": {
+      "field": {
+       "group": "height"
+      }
+     }
+    }
+   },
+   "marks": [
+    {
+     "name": "layer_4_marks",
+     "type": "line",
+     "style": [
+      "line"
+     ],
+     "sort": {
+      "field": [
+       "datum[\"ang\"]"
+      ],
+      "order": [
+       "ascending"
+      ]
+     },
+     "from": {
+      "data": "faceted_path_layer_4_main"
+     },
+     "encode": {
+      "update": {
+       "opacity": {
+        "value": 0.92
+       },
+       "strokeWidth": {
+        "value": 2.6
+       },
+       "strokeJoin": {
+        "value": "round"
+       },
+       "interpolate": {
+        "value": "linear"
+       },
+       "stroke": {
+        "scale": "color",
+        "field": "periodo"
+       },
+       "description": {
+        "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; y: \" + (format(datum[\"y\"], \"\")) + \"; periodo: \" + (isValid(datum[\"periodo\"]) ? isArray(datum[\"periodo\"]) ? join(datum[\"periodo\"], ' ') : datum[\"periodo\"] : \"\"+datum[\"periodo\"]) + \"; ang: \" + (isValid(datum[\"ang\"]) ? isArray(datum[\"ang\"]) ? join(datum[\"ang\"], ' ') : datum[\"ang\"] : \"\"+datum[\"ang\"])"
+       },
+       "x": {
+        "scale": "x",
+        "field": "x"
+       },
+       "y": {
+        "scale": "y",
+        "field": "y"
+       },
+       "defined": {
+        "signal": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"y\"]) && isFinite(+datum[\"y\"])"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "layer_5_pathgroup",
+   "type": "group",
+   "from": {
+    "facet": {
+     "name": "faceted_path_layer_5_main",
+     "data": "data_1",
+     "groupby": [
+      "periodo"
+     ]
+    }
+   },
+   "encode": {
+    "update": {
+     "width": {
+      "field": {
+       "group": "width"
+      }
+     },
+     "height": {
+      "field": {
+       "group": "height"
+      }
+     }
+    }
+   },
+   "marks": [
+    {
+     "name": "layer_5_marks",
+     "type": "line",
+     "style": [
+      "line"
+     ],
+     "sort": {
+      "field": [
+       "datum[\"ang\"]"
+      ],
+      "order": [
+       "ascending"
+      ]
+     },
+     "from": {
+      "data": "faceted_path_layer_5_main"
+     },
+     "encode": {
+      "update": {
+       "opacity": {
+        "value": 0.92
+       },
+       "strokeWidth": {
+        "value": 2.6
+       },
+       "stroke": {
+        "scale": "color",
+        "field": "periodo"
+       },
+       "description": {
+        "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; y: \" + (format(datum[\"y\"], \"\")) + \"; periodo: \" + (isValid(datum[\"periodo\"]) ? isArray(datum[\"periodo\"]) ? join(datum[\"periodo\"], ' ') : datum[\"periodo\"] : \"\"+datum[\"periodo\"]) + \"; ang: \" + (isValid(datum[\"ang\"]) ? isArray(datum[\"ang\"]) ? join(datum[\"ang\"], ' ') : datum[\"ang\"] : \"\"+datum[\"ang\"])"
+       },
+       "x": {
+        "scale": "x",
+        "field": "x"
+       },
+       "y": {
+        "scale": "y",
+        "field": "y"
+       },
+       "defined": {
+        "signal": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"y\"]) && isFinite(+datum[\"y\"])"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "layer_6_marks",
+   "type": "symbol",
+   "style": [
+    "circle"
+   ],
+   "from": {
+    "data": "data_2"
+   },
+   "encode": {
+    "update": {
+     "opacity": {
+      "value": 0.7
+     },
+     "stroke": {
+      "value": "white"
+     },
+     "strokeWidth": {
+      "value": 1.2
+     },
+     "size": {
+      "value": 78
+     },
+     "fill": {
+      "scale": "color",
+      "field": "descriptor"
+     },
+     "tooltip": {
+      "signal": "{\"Área\": isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], '\\n') : datum[\"area\"] : \"\"+datum[\"area\"], \"Corte\": isValid(datum[\"periodo\"]) ? isArray(datum[\"periodo\"]) ? join(datum[\"periodo\"], '\\n') : datum[\"periodo\"] : \"\"+datum[\"periodo\"], \"Promedio grupo\": format(datum[\"promedio\"], \".2f\"), \"n válido\": format(datum[\"n\"], \"\"), \"Descriptor\": isValid(datum[\"descriptor\"]) ? isArray(datum[\"descriptor\"]) ? join(datum[\"descriptor\"], '\\n') : datum[\"descriptor\"] : \"\"+datum[\"descriptor\"]}"
+     },
+     "ariaRoleDescription": {
+      "value": "circle"
+     },
+     "description": {
+      "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; y: \" + (format(datum[\"y\"], \"\")) + \"; descriptor: \" + (isValid(datum[\"descriptor\"]) ? isArray(datum[\"descriptor\"]) ? join(datum[\"descriptor\"], ' ') : datum[\"descriptor\"] : \"\"+datum[\"descriptor\"]) + \"; Área: \" + (isValid(datum[\"area\"]) ? isArray(datum[\"area\"]) ? join(datum[\"area\"], ' ') : datum[\"area\"] : \"\"+datum[\"area\"]) + \"; Corte: \" + (isValid(datum[\"periodo\"]) ? isArray(datum[\"periodo\"]) ? join(datum[\"periodo\"], ' ') : datum[\"periodo\"] : \"\"+datum[\"periodo\"]) + \"; Promedio grupo: \" + (format(datum[\"promedio\"], \".2f\")) + \"; n válido: \" + (format(datum[\"n\"], \"\")) + \"; Descriptor: \" + (isValid(datum[\"descriptor\"]) ? isArray(datum[\"descriptor\"]) ? join(datum[\"descriptor\"], ' ') : datum[\"descriptor\"] : \"\"+datum[\"descriptor\"])"
+     },
+     "x": {
+      "scale": "x",
+      "field": "x"
+     },
+     "y": {
+      "scale": "y",
+      "field": "y"
+     },
+     "shape": {
+      "value": "circle"
+     }
+    }
+   }
+  },
+  {
+   "name": "layer_7_marks",
+   "type": "text",
+   "style": [
+    "text"
+   ],
+   "from": {
+    "data": "data_5"
+   },
+   "encode": {
+    "update": {
+     "align": {
+      "value": "left"
+     },
+     "baseline": {
+      "value": "middle"
+     },
+     "fontSize": {
+      "value": 8.5
+     },
+     "fill": {
+      "value": "#C8811E"
+     },
+     "description": {
+      "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; y: \" + (format(datum[\"y\"], \"\")) + \"; txt: \" + (isValid(datum[\"txt\"]) ? isArray(datum[\"txt\"]) ? join(datum[\"txt\"], ' ') : datum[\"txt\"] : \"\"+datum[\"txt\"])"
+     },
+     "x": {
+      "scale": "x",
+      "field": "x"
+     },
+     "y": {
+      "scale": "y",
+      "field": "y"
+     },
+     "text": {
+      "signal": "isValid(datum[\"txt\"]) ? datum[\"txt\"] : \"\"+datum[\"txt\"]"
+     }
+    }
+   }
+  }
+ ],
+ "scales": [
+  {
+   "name": "x",
+   "type": "linear",
+   "domain": [
+    -6.8,
+    6.8
+   ],
+   "range": [
+    0,
+    {
+     "signal": "width"
+    }
+   ],
+   "zero": true
+  },
+  {
+   "name": "y",
+   "type": "linear",
+   "domain": [
+    -6.8,
+    6.8
+   ],
+   "range": [
+    {
+     "signal": "height"
+    },
+    0
+   ],
+   "zero": true
+  },
+  {
+   "name": "color",
+   "type": "ordinal",
+   "domain": {
+    "fields": [
+     [
+      "Inicio",
+      "Proceso"
+     ],
+     [
+      "Desacuerdo marcado",
+      "Desacuerdo",
+      "Posición intermedia",
+      "Acuerdo",
+      "Acuerdo marcado",
+      "Sin datos"
+     ]
+    ]
+   },
+   "range": [
+    "#9CC0E0",
+    "#1F4E79"
+   ]
+  }
+ ],
+ "legends": [
+  {
+   "columns": 2,
+   "labelFontSize": 10,
+   "orient": "bottom",
+   "symbolType": "stroke",
+   "title": "Corte, Nivel del área",
+   "titleFontSize": 10,
+   "labelLimit": 200,
+   "stroke": "color",
+   "direction": "horizontal",
+   "encode": {
+    "symbols": {
+     "update": {
+      "opacity": {
+       "value": 0.92
+      }
+     }
+    }
+   },
+   "fill": "color"
+  }
+ ],
+ "config": {
+  "style": {
+   "cell": {
+    "stroke": null
+   }
+  }
+ }
+}

@@ -1,0 +1,154 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+  "description": "[TARJETA DE CONCLUSIONES · Vega nativo] TOV Academia Juvenil 2026 (Academia Juvenil). Un bloque con 4 parrafos (uno por grafico): titulo en negrita + conclusion. El texto es dinamico (medidas DAX que reaccionan a los filtros). Sin width/height: crece con el contenedor. Campos: Guion_TOV[orden] + Guion_TOV[grafico] + [TXT_Parrafo].",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "background": "transparent",
+  "padding": 10,
+  "data": [
+    {
+      "name": "dataset"
+    },
+    {
+      "name": "b0",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum.TXT_Parrafo) && datum.TXT_Parrafo !== ''"
+        },
+        {
+          "type": "collect",
+          "sort": {
+            "field": "orden"
+          }
+        },
+        {
+          "type": "formula",
+          "expr": "upper(datum.grafico)",
+          "as": "titulo"
+        },
+        {
+          "type": "formula",
+          "expr": "replace(datum.TXT_Parrafo, /(.{1,90})(\\s|$)/g, '$1\\n')",
+          "as": "cuerpo"
+        },
+        {
+          "type": "formula",
+          "expr": "length(split(datum.cuerpo, '\\n')) - 1",
+          "as": "nlin"
+        },
+        {
+          "type": "window",
+          "sort": {
+            "field": "orden"
+          },
+          "ops": [
+            "row_number"
+          ],
+          "as": [
+            "rn"
+          ]
+        },
+        {
+          "type": "window",
+          "sort": {
+            "field": "orden"
+          },
+          "ops": [
+            "sum"
+          ],
+          "fields": [
+            "nlin"
+          ],
+          "as": [
+            "acum"
+          ]
+        },
+        {
+          "type": "formula",
+          "expr": "(datum.acum - datum.nlin) * 16 + datum.rn * 12",
+          "as": "ypar"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "text",
+      "from": {
+        "data": "b0"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 10
+          },
+          "y": {
+            "field": "ypar"
+          },
+          "text": {
+            "field": "titulo"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "font": {
+            "value": "Segoe UI"
+          },
+          "fontSize": {
+            "value": 11.5
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#1F4E79"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "b0"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 10
+          },
+          "y": {
+            "expr": "datum.ypar + 15"
+          },
+          "text": {
+            "field": "cuerpo"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "font": {
+            "value": "Segoe UI"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "lineHeight": {
+            "value": 16
+          },
+          "fill": {
+            "value": "#333333"
+          }
+        }
+      }
+    }
+  ]
+}

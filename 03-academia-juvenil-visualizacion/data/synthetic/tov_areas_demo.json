@@ -1,0 +1,242 @@
+[
+  {
+    "area": "Ciencias",
+    "orden": 1,
+    "valor": 2.78,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Estrategias de estudio",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Ciencias",
+    "orden": 1,
+    "valor": 3.48,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Estrategias de estudio",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Numérica",
+    "orden": 2,
+    "valor": 2.96,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Barreras percibidas",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Numérica",
+    "orden": 2,
+    "valor": 3.66,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Barreras percibidas",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Ingeniería",
+    "orden": 3,
+    "valor": 3.14,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Apoyo percibido",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Ingeniería",
+    "orden": 3,
+    "valor": 3.84,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Apoyo percibido",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Tecnología",
+    "orden": 4,
+    "valor": 3.32,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Motivación",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Tecnología",
+    "orden": 4,
+    "valor": 4.02,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Motivación",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Comunicación",
+    "orden": 5,
+    "valor": 2.6,
+    "tramo": "Desacuerdo",
+    "periodo": "Inicio",
+    "bloque": "Autoconcepto",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Comunicación",
+    "orden": 5,
+    "valor": 3.3,
+    "tramo": "Posición intermedia",
+    "periodo": "Proceso",
+    "bloque": "Autoconcepto",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Liderazgo",
+    "orden": 6,
+    "valor": 2.78,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Expectativas",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Liderazgo",
+    "orden": 6,
+    "valor": 3.48,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Expectativas",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Creatividad",
+    "orden": 7,
+    "valor": 2.96,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Estrategias de estudio",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Creatividad",
+    "orden": 7,
+    "valor": 3.66,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Estrategias de estudio",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Ciudadanía",
+    "orden": 8,
+    "valor": 3.14,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Barreras percibidas",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Ciudadanía",
+    "orden": 8,
+    "valor": 3.84,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Barreras percibidas",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Autonomía",
+    "orden": 9,
+    "valor": 3.32,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Apoyo percibido",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Autonomía",
+    "orden": 9,
+    "valor": 4.02,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Apoyo percibido",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Colaboración",
+    "orden": 10,
+    "valor": 2.6,
+    "tramo": "Desacuerdo",
+    "periodo": "Inicio",
+    "bloque": "Motivación",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Colaboración",
+    "orden": 10,
+    "valor": 3.3,
+    "tramo": "Posición intermedia",
+    "periodo": "Proceso",
+    "bloque": "Motivación",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Bienestar",
+    "orden": 11,
+    "valor": 2.78,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Autoconcepto",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Bienestar",
+    "orden": 11,
+    "valor": 3.48,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Autoconcepto",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Proyectos",
+    "orden": 12,
+    "valor": 2.96,
+    "tramo": "Posición intermedia",
+    "periodo": "Inicio",
+    "bloque": "Expectativas",
+    "estudiante": "DEMO",
+    "n": 6
+  },
+  {
+    "area": "Proyectos",
+    "orden": 12,
+    "valor": 3.66,
+    "tramo": "Acuerdo",
+    "periodo": "Proceso",
+    "bloque": "Expectativas",
+    "estudiante": "DEMO",
+    "n": 6
+  }
+]
